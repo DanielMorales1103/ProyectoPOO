@@ -6,7 +6,7 @@ public class Usuario{
         this.nombre = nombre;
         this.clave = clave;
     }
-//Probando
+//Probando2.0
     public boolean verificar_clave(){
         boolean largo = false;
         boolean mayuscula = false;
