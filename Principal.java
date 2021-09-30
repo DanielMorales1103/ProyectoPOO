@@ -1,6 +1,6 @@
 
 import java.util.Scanner;
-
+import java.util.*;
 public class Principal
 {
 
@@ -12,6 +12,8 @@ public class Principal
     {
         Scanner scanner = new Scanner(System.in);
         Donacion donacion = new Donacion();
+        Usuario perfil;
+        String[][] perfiles = new String[1000][2]; 
 
         String nombre = "";
         String ubicacion = "";
@@ -35,10 +37,49 @@ public class Principal
         boolean buclePrincipal = true;
         boolean bucle = true;
 
+        String usuario="";
+        String contra="";
+        int largo = 0;
+
+        boolean perfilvalido = true;
+        boolean usuariovalido = true;
+        boolean clavevalida= true;
         System.out.println("\nBienvenido, este programa está orientado para poder suministrar a los centros de salud más necesitados de\nGuatemala en estos tiempos de pandemia. Se buscará abastecer a los centros de salud más afectados, buscando de una\nforma equitativa distribuir los recursos con los que se cuenta.\n");
 
 
         //Código para iniciar sesión, siempre antes de entrar a cualquier otro proceso.
+        respuesta = pregunta("\nMenu:\n1. Iniciar sesion\n2. Crear usuario",2);
+        switch (respuesta) {
+            case 1:
+                System.out.println("Ingrese su nombre de usuario");
+                usuario = scanner.nextLine();
+                System.out.println("Ingrese su contraseña");
+                contra = scanner.nextLine();
+                perfil = new Usuario(usuario, contra);
+                perfiles[0][0] = "Admin";
+                perfiles[0][1] = "Hola1234+";
+                largo = perfil.cantidad(perfiles);
+                System.out.println(largo);
+                perfilvalido =  perfil.verificar_acceso(perfiles,largo);
+                if(perfilvalido){
+                    System.out.println("Perfil valido");
+                }else{
+                    System.out.println("Perfil no valido");
+                }
+                break;
+            case 2:
+                System.out.println("Ingrese su nombre de usuario");
+                usuario = scanner.nextLine();
+                System.out.println("Ingrese su contraseña");
+                contra = scanner.nextLine();
+                perfil = new Usuario(usuario, contra);
+                usuariovalido = perfil.verificar_usuario();
+                clavevalida = perfil.verificar_clave();
+                //hacer el ingreso al archivo si los dos son true
+                break;
+            default:
+                break;
+        }
 
 
         while(buclePrincipal)
@@ -58,24 +99,28 @@ public class Principal
                     numero = scanner.nextLine();
 
                     bucle = true;
-                    try {
-                        while(bucle)
-                        {
-                            System.out.println("\nIngrese la cantidad de pacientes que se encuentran en este centro médico: ");
-                            pacientes= scanner.nextInt();
-                            scanner.nextLine();
-                            bucle = false;
-                            if(pacientes <= 0)
-                            {
-                                System.out.println("\nRespuesta no valida.");
-                                bucle = true;
-                            }
+                   
+                    while (bucle){
+                        try {
+                            //while(bucle)
+                            //{
+                                System.out.println("\nIngrese la cantidad de pacientes que se encuentran en este centro médico: ");
+                                pacientes= scanner.nextInt();
+                                scanner.nextLine();
+                                //bucle = false;
+                                if(pacientes <= 0)
+                                {
+                                    System.out.println("\nRespuesta no valida.");
+                                    bucle = true;
+                                }else{
+                                    bucle =false;
+                                }
+                            //}
+                        } catch (InputMismatchException e) {
+                            System.out.println("\nPor favor, ingrese solamente numeros enteros.");
+                            bucle = true;
                         }
-                    } catch (Exception e) {
-                        System.out.println("\nPor favor, ingrese solamente numeros enteros.");
-                        bucle = true;
                     }
-
                     bucle = true;
                     try {
                         while(bucle)
