@@ -31,7 +31,7 @@ public class Usuario{
                 }
             }
         }
-        if (mayuscula && minuscula && numero && especial && espacio){
+        if (mayuscula && minuscula && numero && especial && espacio && largo){
             return true;
         }else{
             return false;
