@@ -1,5 +1,5 @@
 /*
-Clase Donacion, la cual realizará los procesos para el distinto tipo de donacion que haga el usuario.
+Clase Donacion, la cual realizará los procesos para el distinto tipo de donacion que haga el usuario
 */
 
 
