@@ -34,7 +34,8 @@ public class Principal
 
         int respuesta;
         int x;
-        boolean buclePrincipal = true;
+        boolean buclePrincipal = false;
+        boolean sesion = true;
         boolean bucle = true;
 
         String usuario="";
@@ -48,39 +49,48 @@ public class Principal
 
 
         //Código para iniciar sesión, siempre antes de entrar a cualquier otro proceso.
-        respuesta = pregunta("\nMenu:\n1. Iniciar sesion\n2. Crear usuario",2);
-        switch (respuesta) {
-            case 1:
-                System.out.println("Ingrese su nombre de usuario");
-                usuario = scanner.nextLine();
-                System.out.println("Ingrese su contraseña");
-                contra = scanner.nextLine();
-                perfil = new Usuario(usuario, contra);
-                perfiles[0][0] = "Admin";
-                perfiles[0][1] = "Hola1234+";
-                largo = perfil.cantidad(perfiles);
-                System.out.println(largo);
-                perfilvalido =  perfil.verificar_acceso(perfiles,largo);
-                if(perfilvalido){
-                    System.out.println("Perfil valido");
-                }else{
-                    System.out.println("Perfil no valido");
-                }
-                break;
-            case 2:
-                System.out.println("Ingrese su nombre de usuario");
-                usuario = scanner.nextLine();
-                System.out.println("Ingrese su contraseña");
-                contra = scanner.nextLine();
-                perfil = new Usuario(usuario, contra);
-                usuariovalido = perfil.verificar_usuario();
-                clavevalida = perfil.verificar_clave();
-                //hacer el ingreso al archivo si los dos son true
-                break;
-            default:
-                break;
-        }
+        while(sesion)
+        {
+            respuesta = pregunta("\nMenu:\n1. Iniciar sesion.\n2. Crear usuario.\n3. Cancelar.\nRespuesta: ", 3);
+            switch (respuesta) {
+                case 1:
+                    System.out.println("Ingrese su nombre de usuario");
+                    usuario = scanner.nextLine();
+                    System.out.println("Ingrese su contraseña");
+                    contra = scanner.nextLine();
+                    perfil = new Usuario(usuario, contra);
+                    perfiles[0][0] = "Admin";
+                    perfiles[0][1] = "Hola1234+";
+                    largo = perfil.cantidad(perfiles);
+                    System.out.println(largo);
+                    perfilvalido =  perfil.verificar_acceso(perfiles,largo);
+                    if(perfilvalido){
+                        System.out.println("Perfil valido");
+                        sesion = false;
+                        buclePrincipal = true;
+                    }else{
+                        System.out.println("Perfil no valido");
+                    }
+                    break;
+                case 2:
+                    System.out.println("Ingrese su nombre de usuario");
+                    usuario = scanner.nextLine();
+                    System.out.println("Ingrese su contraseña");
+                    contra = scanner.nextLine();
+                    perfil = new Usuario(usuario, contra);
+                    usuariovalido = perfil.verificar_usuario(perfiles, largo);
+                    clavevalida = perfil.verificar_clave();
+                    //hacer el ingreso al archivo si los dos son true
+                    break;
 
+                case 3:
+                buclePrincipal = false;
+                sesion = false;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         while(buclePrincipal)
         {
@@ -405,6 +415,7 @@ public class Principal
                     
                     case 4:
                     buclePrincipal = false;
+                    sesion = true;
                         break;
 
                     default:
