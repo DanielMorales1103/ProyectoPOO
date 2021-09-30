@@ -27,7 +27,7 @@ public class Principal
         int ropaH = 0;
         int ropaM = 0;
         int camas = 0;
-        int savanas = 0;
+        int sabanas = 0;
         int comida = 0;
         int tanquesOxigeno = 0;
 
@@ -379,10 +379,10 @@ public class Principal
                             while(bucle)
                             {
                                 System.out.println("\nIngrese la cantidad de savanas que donara: ");
-                                savanas = scanner.nextInt();
+                                sabanas = scanner.nextInt();
                                 scanner.nextLine();
                                 bucle = false;
-                                if(savanas <= 0)
+                                if(sabanas <= 0)
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
@@ -392,7 +392,7 @@ public class Principal
                             System.out.println("\nPor favor, ingrese solamente numeros enteros.");
                             bucle = true;
                         }
-                    System.out.println(donacion.suministros(medicinas, ropaH, ropaM, camas, savanas, comida, tanquesOxigeno));
+                    System.out.println(donacion.suministros(medicinas, ropaH, ropaM, camas, sabanas, comida, tanquesOxigeno));
 
                     }
                         break;
