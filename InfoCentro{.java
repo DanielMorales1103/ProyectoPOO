@@ -1,4 +1,5 @@
 public class InfoCentro{
+    public void Centro(String[] args) {
     Principal centros;
     centros = new Principal();
     centros.setNombre(nombre);
@@ -104,4 +105,5 @@ public class InfoCentro{
     }
     public void setNumero(String numero){
         this.numero = numero;
+}
 }
