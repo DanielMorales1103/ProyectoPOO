@@ -43,8 +43,8 @@ public class Principal
         int largo = 0;
 
         boolean perfilvalido = true;
-        boolean usuariovalido = true;
-        boolean clavevalida= true;
+        boolean usuariovalido = false;
+        boolean clavevalida= false;
         System.out.println("\nBienvenido, este programa está orientado para poder suministrar a los centros de salud más necesitados de\nGuatemala en estos tiempos de pandemia. Se buscará abastecer a los centros de salud más afectados, buscando de una\nforma equitativa distribuir los recursos con los que se cuenta.\n");
 
 
@@ -61,11 +61,10 @@ public class Principal
                     perfil = new Usuario(usuario, contra);
                     perfiles[0][0] = "Admin";
                     perfiles[0][1] = "Hola1234+";
-                    largo = perfil.cantidad(perfiles);
-                    System.out.println(largo);
+                    largo = perfil.cantidad(perfiles);                    
                     perfilvalido =  perfil.verificar_acceso(perfiles,largo);
                     if(perfilvalido){
-                        System.out.println("Perfil valido");
+                        System.out.println("Bienvenido: "+usuario);
                         sesion = false;
                         buclePrincipal = true;
                     }else{
@@ -81,6 +80,12 @@ public class Principal
                     usuariovalido = perfil.verificar_usuario(perfiles, largo);
                     clavevalida = perfil.verificar_clave();
                     //hacer el ingreso al archivo si los dos son true
+                    if (usuariovalido && clavevalida){
+                        System.out.println("Usuario valido");
+                        System.out.println("Bienvenido: "+ usuario);
+                    }else{
+                        System.out.println("Usuario invalido");
+                    }
                     break;
 
                 case 3:
@@ -94,7 +99,7 @@ public class Principal
 
         while(buclePrincipal)
         {
-                respuesta = pregunta("\nMenu:\n1. Agregar nuevo centro médico.\n2. Donacion.\n3. Mostrar datos de los centros medicos. \n5. Cerrar sesion.\nRespuesta: ", 4);
+                respuesta = pregunta("\nMenu:\n1. Agregar nuevo centro médico.\n2. Donacion.\n3. Mostrar datos de los centros medicos. \n4. Cerrar sesion.\nRespuesta: ", 4);
                 switch(respuesta)
                 {
                     case 1:
@@ -445,6 +450,10 @@ public class Principal
                         System.out.print(centros.getTanquesOxigeno());
                         break;
 
+                    case 4:
+                            buclePrincipal=false;
+                        break;
+                    
                     default:
                     System.out.println("Ingrese una opcion valida.\n");
                 }
