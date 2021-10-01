@@ -44,7 +44,8 @@ public class Usuario{
     public boolean verificar_usuario(String[][] base, int largo){
         boolean valido = true;
         for (int i = 0; i<largo;i++){
-            if(base[i][0].equals(nombre)){
+            System.out.print(base[i][0] +"== "+ this.nombre);
+            if(base[i][0].equals(nombre2)){
                 valido = false;
             }
         }
