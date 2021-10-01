@@ -35,7 +35,7 @@ public class InfoCentro{
     System.out.print("\n");
     System.out.print("Cantidad de tanques del centro: ");
     System.out.print(centros.getTanquesOxigeno());
-
+}
     private String nombre;
     public String getNombre(){
     return nombre;
@@ -105,5 +105,5 @@ public class InfoCentro{
     }
     public void setNumero(String numero){
         this.numero = numero;
-}
+    }
 }
