@@ -12,6 +12,7 @@ public class Principal
     {
         Scanner scanner = new Scanner(System.in);
         Donacion donacion = new Donacion();
+        ArrayList<centroMedico> centros = new ArrayList<centroMedico>();
         Usuario perfil;
         String[][] perfiles = new String[1000][2]; 
 
@@ -114,32 +115,32 @@ public class Principal
                     numero = scanner.nextLine();
 
                     bucle = true;
-                   
-                    while (bucle){
+                    while(bucle)
+                    {
                         try {
-                            //while(bucle)
-                            //{
-                                System.out.println("\nIngrese la cantidad de pacientes que se encuentran en este centro médico: ");
-                                pacientes= scanner.nextInt();
-                                scanner.nextLine();
-                                //bucle = false;
-                                if(pacientes <= 0)
-                                {
-                                    System.out.println("\nRespuesta no valida.");
-                                    bucle = true;
-                                }else{
-                                    bucle =false;
-                                }
-                            //}
-                        } catch (InputMismatchException e) {
-                            System.out.println("\nPor favor, ingrese solamente numeros enteros.");
+                            System.out.println("\nIngrese la cantidad de pacientes que se encuentran en este centro médico: ");
+                            pacientes= scanner.nextInt();
+                            scanner.nextLine();
+                            bucle = false;
+                            if(pacientes <= 0)
+                            {
+                                System.out.println("\nRespuesta no valida.");
+                                bucle = true;
+                            }else{
+                                bucle =false;
+                            }
+                            
+                        } catch (Exception e) {
+                            System.out.println("\nPor favor, ingrese solamente numeros.");
+                            scanner.nextLine();
                             bucle = true;
                         }
                     }
+                    
                     bucle = true;
-                    try {
-                        while(bucle)
-                        {
+                    while(bucle)
+                    {
+                        try {
                             System.out.println("\nIngrese la cantidad de camas con las que cuenta este centro médico: ");
                             camas= scanner.nextInt();
                             scanner.nextLine();
@@ -148,17 +149,18 @@ public class Principal
                             {
                                 System.out.println("\nRespuesta no valida.");
                                 bucle = true;
-                            }
+                            }                            
+                        } catch (Exception e) {
+                            System.out.println("\nPor favor, ingrese solamente numeros.");
+                            scanner.nextLine();
+                            bucle = true;
                         }
-                    } catch (Exception e) {
-                        System.out.println("\nPor favor, ingrese solamente numeros enteros.");
-                        bucle = true;
                     }
 
                     bucle = true;
-                    try {
-                        while(bucle)
-                        {
+                    while(bucle)
+                    {
+                        try {
                             System.out.println("\nIngrese la cantidad de medicina con la que cuenta este centro médico (en general, cual es la suma de medicina): ");
                             medicinas= scanner.nextInt();
                             scanner.nextLine();
@@ -167,17 +169,18 @@ public class Principal
                             {
                                 System.out.println("\nRespuesta no valida.");
                                 bucle = true;
-                            }
+                            }                           
+                        } catch (Exception e) {
+                            System.out.println("\nPor favor, ingrese solamente numeros.");
+                            scanner.nextLine();
+                            bucle = true;
                         }
-                    } catch (Exception e) {
-                        System.out.println("\nPor favor, ingrese solamente numeros enteros.");
-                        bucle = true;
                     }
 
                     bucle = true;
-                    try {
-                        while(bucle)
-                        {
+                    while(bucle)
+                    {
+                        try {
                             System.out.println("\nIngrese la cantidad de médicos con los que cuenta este centro médico: ");
                             doctores = scanner.nextInt();
                             scanner.nextLine();
@@ -186,17 +189,18 @@ public class Principal
                             {
                                 System.out.println("\nRespuesta no valida.");
                                 bucle = true;
-                            }
+                            }                          
+                        } catch (Exception e) {
+                            System.out.println("\nPor favor, ingrese solamente numeros.");
+                            scanner.nextLine();
+                            bucle = true;
                         }
-                    } catch (Exception e) {
-                        System.out.println("\nPor favor, ingrese solamente numeros enteros.");
-                        bucle = true;
                     }
-                    
+
                     bucle = true;
-                    try {
-                        while(bucle)
-                        {
+                    while(bucle)
+                    {
+                        try {
                             System.out.println("\nIngrese la cantidad de tanques de oxígeno con los que cuenta este centro médico: ");
                             tanquesOxigeno = scanner.nextInt();
                             scanner.nextLine();
@@ -205,17 +209,18 @@ public class Principal
                             {
                                 System.out.println("\nRespuesta no valida.");
                                 bucle = true;
-                            }
+                            }                          
+                        } catch (Exception e) {
+                            System.out.println("\nPor favor, ingrese solamente numeros.");
+                            scanner.nextLine();
+                            bucle = true;
                         }
-                    } catch (Exception e) {
-                        System.out.println("\nPor favor, ingrese solamente numeros enteros.");
-                        bucle = true;
                     }
 
                     bucle = true;
-                    try {
-                        while(bucle)
-                        {
+                    while(bucle)
+                    {
+                        try {
                             System.out.println("\nIngrese la cantidad de comida con la que cuenta este centro médico (cantidad de platos de comida): ");
                             comida= scanner.nextInt();
                             scanner.nextLine();
@@ -224,17 +229,18 @@ public class Principal
                             {
                                 System.out.println("\nRespuesta no valida.");
                                 bucle = true;
-                            }
+                            }                          
+                        } catch (Exception e) {
+                            System.out.println("\nPor favor, ingrese solamente numeros.");
+                            scanner.nextLine();
+                            bucle = true;
                         }
-                    } catch (Exception e) {
-                        System.out.println("\nPor favor, ingrese solamente numeros enteros.");
-                        bucle = true;
                     }
 
                     bucle = true;
-                    try {
-                        while(bucle)
-                        {
+                    while(bucle)
+                    {
+                        try {
                             System.out.println("\nIngrese la cantidad de fondos con los que cuenta el hospital ");
                             dinero= scanner.nextDouble();
                             scanner.nextLine();
@@ -243,13 +249,15 @@ public class Principal
                             {
                                 System.out.println("\nRespuesta no valida.");
                                 bucle = true;
-                            }
+                            }                         
+                        } catch (Exception e) {
+                            System.out.println("\nPor favor, ingrese solamente numeros.");
+                            scanner.nextLine();
+                            bucle = true;
                         }
-                    } catch (Exception e) {
-                        System.out.println("\nPor favor, ingrese solamente numeros.");
-                        bucle = true;
                     }
-
+                    centroMedico centro = new centroMedico(nombre, dinero, numero, ubicacion, tanquesOxigeno, comida, camas, pacientes, doctores, medicinas);
+                    centros.add(centro);
                     //centroMedico.agregarCentro(nombre, unbicacion, capacidadAtencion, medicos, camas, medicinas, ropaH, ropaM, savanas, comida, tanquesOxigeno, pacientes, dinero);
                         break;
 
@@ -259,26 +267,27 @@ public class Principal
                     {
                         case 1:
                         bucle = true;
-                        try {
-                            while(bucle)
-                            {
+                        while(bucle)
+                        {
+                            try {
                                 System.out.println("\nPor favor, ingrese el monto a donar en Quetzales\nRepuesta: ");
                                 dinero = scanner.nextDouble();
                                 scanner.nextLine();
                                 System.out.println(donacion.monetaria(dinero));
-                                bucle = false;
+                                bucle = false;                        
+                            } catch (Exception e) {
+                                System.out.println("\nPor favor, ingrese solamente numeros.");
+                                scanner.nextLine();
+                                bucle = true;
                             }
-                        } catch (Exception e) {
-                            System.out.println("\nPor favor, ingrese solamente numeros.");
-                            bucle = true;
                         }
                             break;
                         
                         case 2:
                         bucle = true;
-                        try {
-                            while(bucle)
-                            {
+                        while(bucle)
+                        {
+                            try {
                                 System.out.println("\nIngrese la cantidad de camas que donara: ");
                                 camas= scanner.nextInt();
                                 scanner.nextLine();
@@ -287,17 +296,18 @@ public class Principal
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
-                                }
+                                }                       
+                            } catch (Exception e) {
+                                System.out.println("\nPor favor, ingrese solamente numeros.");
+                                scanner.nextLine();
+                                bucle = true;
                             }
-                        } catch (Exception e) {
-                            System.out.println("\nPor favor, ingrese solamente numeros enteros.");
-                            bucle = true;
                         }
 
                         bucle = true;
-                        try {
-                            while(bucle)
-                            {
+                        while(bucle)
+                        {
+                            try {
                                 System.out.println("\nIngrese la cantidad de medicina que donara: ");
                                 medicinas= scanner.nextInt();
                                 scanner.nextLine();
@@ -306,17 +316,18 @@ public class Principal
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
-                                }
+                                }                      
+                            } catch (Exception e) {
+                                System.out.println("\nPor favor, ingrese solamente numeros.");
+                                scanner.nextLine();
+                                bucle = true;
                             }
-                        } catch (Exception e) {
-                            System.out.println("\nPor favor, ingrese solamente numeros enteros.");
-                            bucle = true;
                         }
 
                         bucle = true;
-                        try {
-                            while(bucle)
-                            {
+                        while(bucle)
+                        {
+                            try {
                                 System.out.println("\nIngrese la cantidad ropa para hombre que donara: ");
                                 ropaH = scanner.nextInt();
                                 scanner.nextLine();
@@ -325,17 +336,18 @@ public class Principal
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
-                                }
+                                }                      
+                            } catch (Exception e) {
+                                System.out.println("\nPor favor, ingrese solamente numeros.");
+                                scanner.nextLine();
+                                bucle = true;
                             }
-                        } catch (Exception e) {
-                            System.out.println("\nPor favor, ingrese solamente numeros enteros.");
-                            bucle = true;
                         }
 
                         bucle = true;
-                        try {
-                            while(bucle)
-                            {
+                        while(bucle)
+                        {
+                            try {
                                 System.out.println("\nIngrese la cantidad ropa para mujer que donara: ");
                                 ropaM = scanner.nextInt();
                                 scanner.nextLine();
@@ -344,17 +356,18 @@ public class Principal
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
-                                }
+                                }                     
+                            } catch (Exception e) {
+                                System.out.println("\nPor favor, ingrese solamente numeros.");
+                                scanner.nextLine();
+                                bucle = true;
                             }
-                        } catch (Exception e) {
-                            System.out.println("\nPor favor, ingrese solamente numeros enteros.");
-                            bucle = true;
                         }
                         
                         bucle = true;
-                        try {
-                            while(bucle)
-                            {
+                        while(bucle)
+                        {
+                            try {
                                 System.out.println("\nIngrese la cantidad de tanques de oxigeno que donara: ");
                                 tanquesOxigeno = scanner.nextInt();
                                 scanner.nextLine();
@@ -363,17 +376,18 @@ public class Principal
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
-                                }
+                                }                     
+                            } catch (Exception e) {
+                                System.out.println("\nPor favor, ingrese solamente numeros.");
+                                scanner.nextLine();
+                                bucle = true;
                             }
-                        } catch (Exception e) {
-                            System.out.println("\nPor favor, ingrese solamente numeros enteros.");
-                            bucle = true;
                         }
 
                         bucle = true;
-                        try {
-                            while(bucle)
-                            {
+                        while(bucle)
+                        {
+                            try {
                                 System.out.println("\nIngrese la cantidad de comida que donara (cantidad de platos de comida): ");
                                 comida = scanner.nextInt();
                                 scanner.nextLine();
@@ -382,17 +396,18 @@ public class Principal
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
-                                }
+                                }                    
+                            } catch (Exception e) {
+                                System.out.println("\nPor favor, ingrese solamente numeros.");
+                                scanner.nextLine();
+                                bucle = true;
                             }
-                        } catch (Exception e) {
-                            System.out.println("\nPor favor, ingrese solamente numeros enteros.");
-                            bucle = true;
                         }
 
                         bucle = true;
-                        try {
-                            while(bucle)
-                            {
+                        while(bucle)
+                        {
+                            try {
                                 System.out.println("\nIngrese la cantidad de savanas que donara: ");
                                 sabanas = scanner.nextInt();
                                 scanner.nextLine();
@@ -401,53 +416,31 @@ public class Principal
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
-                                }
+                                }                    
+                            } catch (Exception e) {
+                                System.out.println("\nPor favor, ingrese solamente numeros.");
+                                scanner.nextLine();
+                                bucle = true;
                             }
-                        } catch (Exception e) {
-                            System.out.println("\nPor favor, ingrese solamente numeros enteros.");
-                            bucle = true;
                         }
-                    System.out.println(donacion.suministros(medicinas, ropaH, ropaM, camas, sabanas, comida, tanquesOxigeno));
-
+                        System.out.println(donacion.suministros(medicinas, ropaH, ropaM, camas, sabanas, comida, tanquesOxigeno));
+                            break;
                     }
-                        break;
                     
                     case 3:
-                        Principal centros;
-                        centros = new Principal();
-                        centros.setNombre(nombre);
-                        centros.setDinero(dinero);
-                        centros.setMedicina(medicinas);
-                        centros.setDoctores(doctores);
-                        centros.setCamas(camas);
-                        centros.setComida(comida);
-                        centros.setTanquesOxigeno(tanquesOxigeno);
-                        centros.setNumero(numero);
-                        centros.setUbicacion(ubicacion);
-                        centros.setPacientes(pacientes);
-                        System.out.print("Nombre del centro: ");
-                        System.out.print(centros.getNombre());
-                        System.out.print("\n");
-                        System.out.print("Localización del centro: ");
-                        System.out.print(centros.getUbicacion());
-                        System.out.print("\n");
-                        System.out.print("Numero de telefono del centro: ");
-                        System.out.print(centros.getNumero());
-                        System.out.print("\n");
-                        System.out.print("Cantidad de doctores del centro: ");
-                        System.out.print(centros.getDoctores());
-                        System.out.print("\n");
-                        System.out.print("Cantidad de pacientes del centro: ");
-                        System.out.print(centros.getPacientes());
-                        System.out.print("\n");
-                        System.out.print("Cantidad de camas del centro: ");
-                        System.out.print(centros.getCamas());
-                        System.out.print("\n");
-                        System.out.print("Cantidad de comida del centro: ");
-                        System.out.print(centros.getComida());
-                        System.out.print("\n");
-                        System.out.print("Cantidad de tanques del centro: ");
-                        System.out.print(centros.getTanquesOxigeno());
+                    for(centroMedico k: centros)
+                    {
+                        System.out.print("\nNombre del centro: " + k.getNombre());
+                        System.out.print("\nLocalización del centro: " + k.getUbicacion());
+                        System.out.print("\nNumero de telefono del centro: " + k.getNumero());
+                        System.out.print("\nCantidad de doctores del centro: " + k.getDoctores());
+                        System.out.print("\nCantidad de pacientes del centro: " + k.getPacientes());
+                        System.out.print("\nCantidad de camas del centro: " + k.getCamas());
+                        System.out.print("\nCantidad de comida del centro: " + k.getComida());
+                        System.out.print("\nCantidad de tanques del centro: " + k.getTanquesOxigeno());
+                    }
+                        
+                        
                         break;
 
                     case 4:
