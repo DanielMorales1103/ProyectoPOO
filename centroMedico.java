@@ -11,6 +11,20 @@ public class centroMedico
     private Integer doctores;
     private Integer medicinas;
     
+    public centroMedico(String nombre, double dinero, String numero, String ubicacion, int tanquesOxigeno,
+                        int comida, int camas, int pacientes, int doctores, int medicinas)
+    {
+        this.nombre = nombre;
+        this.dinero = dinero;
+        this.numero = numero;
+        this.ubicacion = ubicacion;
+        this.tanquesOxigeno = tanquesOxigeno;
+        this.comida = comida;
+        this.camas = camas;
+        this.pacientes = pacientes;
+        this.doctores = doctores;
+        this.medicinas = medicinas;
+    }   
     
     public String getNombre()
     {

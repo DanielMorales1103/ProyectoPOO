@@ -45,7 +45,7 @@ public class Usuario{
         boolean valido = true;
         for (int i = 0; i<largo;i++){
             System.out.print(base[i][0] +"== "+ this.nombre);
-            if(base[i][0].equals(nombre2)){
+            if(base[i][0].equals(nombre)){
                 valido = false;
             }
         }
