@@ -19,7 +19,7 @@ public class Principal
         Donacion donacion = new Donacion();
         ArrayList<centroMedico> centros = new ArrayList<centroMedico>();
         Usuario perfil;
-        String[][] perfiles = new String[1000][2]; 
+        String[][] perfiles = new String[1000][2];
         Archivos archivo = new Archivos("prueba.csv");
         ArrayList<String> usuarios = archivo.lectura();
         boolean hayArchivo = false;
@@ -76,7 +76,7 @@ public class Principal
                     perfil = new Usuario(usuario, contra);
                     //perfiles[0][0] = "Admin";
                     //perfiles[0][1] = "Hola1234+";
-                    //largo = perfil.cantidad(perfiles);                    
+                    //largo = perfil.cantidad(perfiles);                  
                     perfilvalido =  perfil.verificar_acceso(usuarios, usuario, contra);
                     if(perfilvalido){
                         System.out.println("Bienvenido: "+usuario);
@@ -441,19 +441,26 @@ public class Principal
                         System.out.println(donacion.suministros(medicinas, ropaH, ropaM, camas, sabanas, comida, tanquesOxigeno));
                             break;
                     }
+                        break;
                     
                     case 3:
-                    for(centroMedico k: centros)
+                    if(centros.size() > 0)
                     {
-                        System.out.print("\nNombre del centro: " + k.getNombre());
-                        System.out.print("\nLocalización del centro: " + k.getUbicacion());
-                        System.out.print("\nNumero de telefono del centro: " + k.getNumero());
-                        System.out.print("\nCantidad de doctores del centro: " + k.getDoctores());
-                        System.out.print("\nCantidad de pacientes del centro: " + k.getPacientes());
-                        System.out.print("\nCantidad de camas del centro: " + k.getCamas());
-                        System.out.print("\nCantidad de comida del centro: " + k.getComida());
-                        System.out.print("\nCantidad de tanques del centro: " + k.getTanquesOxigeno());
+                        for(centroMedico k: centros)
+                        {
+                            System.out.print("\nNombre del centro: " + k.getNombre());
+                            System.out.print("\nLocalización del centro: " + k.getUbicacion());
+                            System.out.print("\nNumero de telefono del centro: " + k.getNumero());
+                            System.out.print("\nCantidad de doctores del centro: " + k.getDoctores());
+                            System.out.print("\nCantidad de pacientes del centro: " + k.getPacientes());
+                            System.out.print("\nCantidad de camas del centro: " + k.getCamas());
+                            System.out.print("\nCantidad de comida del centro: " + k.getComida());
+                            System.out.print("\nCantidad de tanques del centro: " + k.getTanquesOxigeno());
+                            System.out.print("\nMedicinas del centro: " + k.getMedicina());
+                            System.out.print("\nFondos del centro: Q" + k.getDinero());
+                        }
                     }
+                    else System.out.println("No se cuenta con centros medicos aun.\n");
                         
                         
                         break;
@@ -465,7 +472,7 @@ public class Principal
                     default:
                     System.out.println("Ingrese una opcion valida.\n");
                 }
-        }   
+        }
         
         scanner.close();
         System.out.println("\n¡Agradecemos muchisimo tu donacion. Sera de gran ayuda para muchas personas!");
