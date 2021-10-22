@@ -1,7 +1,9 @@
-/*
-Clase Donacion, la cual realizará los procesos para el distinto tipo de donacion que haga el usuario
-*/
-
+/**
+ * Clase Donacion, la cual realizará los procesos para el distinto tipo de donacion que haga el usuario
+ * Grupo #1. POO
+ * 22 de octubre de 2021
+ * @version 3
+ */
 
 public class Donacion 
 {

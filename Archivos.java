@@ -1,3 +1,10 @@
+/**
+ * Clase Archivos. Será la encargada de generar/manejar las bases de datos en formato CSV.
+ * Grupo #1. POO
+ * 22 de octubre de 2021
+ * @version 3
+ */
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

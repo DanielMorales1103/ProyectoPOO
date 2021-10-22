@@ -1,3 +1,11 @@
+/**
+ * Clase centroMedico, la cual manejara los atributos de los centros méticos
+ * Grupo #1. POO
+ * 22 de octubre de 2021
+ * @version 3
+ */
+
+
 public class centroMedico
 {
     private String nombre;
