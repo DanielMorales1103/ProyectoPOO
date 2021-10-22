@@ -1,4 +1,9 @@
-
+/**
+ * Clase Principal. Será la encargada de interactuar con el usuario, conectará los distintos métodos con este.
+ * Grupo #1. POO
+ * 22 de octubre de 2021
+ * @version 3
+ */
 import java.util.Scanner;
 import java.util.*;
 public class Principal
@@ -15,6 +20,9 @@ public class Principal
         ArrayList<centroMedico> centros = new ArrayList<centroMedico>();
         Usuario perfil;
         String[][] perfiles = new String[1000][2]; 
+        Archivos archivo = new Archivos("prueba.csv");
+        ArrayList<String> usuarios = archivo.lectura();
+        boolean hayArchivo = false;
 
         String nombre = "";
         String ubicacion = "";
@@ -46,6 +54,12 @@ public class Principal
         boolean perfilvalido = true;
         boolean usuariovalido = false;
         boolean clavevalida= false;
+
+        if(!hayArchivo)
+        {
+            archivo.crear_archivo(); 
+            hayArchivo = true;
+        }
         System.out.println("\nBienvenido, este programa está orientado para poder suministrar a los centros de salud más necesitados de\nGuatemala en estos tiempos de pandemia. Se buscará abastecer a los centros de salud más afectados, buscando de una\nforma equitativa distribuir los recursos con los que se cuenta.\n");
 
 
@@ -60,10 +74,10 @@ public class Principal
                     System.out.println("Ingrese su contraseña");
                     contra = scanner.nextLine();
                     perfil = new Usuario(usuario, contra);
-                    perfiles[0][0] = "Admin";
-                    perfiles[0][1] = "Hola1234+";
-                    largo = perfil.cantidad(perfiles);                    
-                    perfilvalido =  perfil.verificar_acceso(perfiles,largo);
+                    //perfiles[0][0] = "Admin";
+                    //perfiles[0][1] = "Hola1234+";
+                    //largo = perfil.cantidad(perfiles);                    
+                    perfilvalido =  perfil.verificar_acceso(usuarios, usuario, contra);
                     if(perfilvalido){
                         System.out.println("Bienvenido: "+usuario);
                         sesion = false;
@@ -78,11 +92,12 @@ public class Principal
                     System.out.println("Ingrese su contraseña");
                     contra = scanner.nextLine();
                     perfil = new Usuario(usuario, contra);
-                    usuariovalido = perfil.verificar_usuario(perfiles, largo);
+                    usuariovalido = perfil.verificar_usuario(usuarios, usuario);
                     clavevalida = perfil.verificar_clave();
                     //hacer el ingreso al archivo si los dos son true
                     if (usuariovalido && clavevalida){
                         System.out.println("Usuario valido");
+                        archivo.escribir_archivo(usuario + "," + contra);
                         System.out.println("Bienvenido: "+ usuario);
                     }else{
                         System.out.println("Usuario invalido");
@@ -484,76 +499,4 @@ public class Principal
         }
         return respuesta;
     }
-
-
-                    private String nombre;
-                    public String getNombre(){
-                    return nombre;
-                    }
-                    public void setNombre(String nombre){
-                    this.nombre = nombre;
-                    }
-                    private Double dinero;
-                    public Double getDinero(){
-                    return dinero;
-                    }
-                    public void setDinero(Double dinero){
-                    this.dinero = dinero;
-                    }
-                    private Integer medicinas;
-                    public Integer getMedicina(){
-                    return medicinas;
-                    }
-                    public void setMedicina(Integer medicinas){
-                    this.medicinas = medicinas;
-                    }
-                    private Integer doctores;
-                    public Integer getDoctores(){
-                    return doctores;
-                    }
-                    public void setDoctores(Integer doctores){
-                    this.doctores = doctores;
-                    }
-                    private Integer pacientes;
-                    public Integer getPacientes(){
-                    return pacientes;
-                    }
-                    public void setPacientes(Integer pacientes){
-                    this.pacientes = pacientes;
-                    }
-                    private Integer camas;
-                    public Integer getCamas(){
-                        return camas;
-                    }
-                    public void setCamas(Integer camas){
-                        this.camas = camas;
-                    }
-                    private Integer comida;
-                    public Integer getComida(){
-                        return comida;
-                    }
-                    public void setComida(Integer comida){
-                        this.comida = comida;
-                    }
-                    private Integer tanquesOxigeno;
-                    public Integer getTanquesOxigeno(){
-                        return tanquesOxigeno;
-                    }
-                    public void setTanquesOxigeno(Integer tanquesOxigeno){
-                        this.tanquesOxigeno = tanquesOxigeno;
-                    }
-                    private String ubicacion;
-                    public String getUbicacion(){
-                        return ubicacion;
-                    }
-                    public void setUbicacion(String ubicacion){
-                        this.ubicacion = ubicacion;
-                    }
-                    private String numero;
-                    public String getNumero(){
-                        return numero;
-                    }
-                    public void setNumero(String numero){
-                        this.numero = numero;
-                    }
-                }
+}

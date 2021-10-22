@@ -1,3 +1,11 @@
+/**
+ * Clase Usuario. Será la encargada de manejar los nombres y contraseñas de los usuarios.
+ * Grupo #1. POO
+ * 22 de octubre de 2021
+ * @version 3
+ */
+import java.util.*;
+
 public class Usuario{
     private String nombre;
     private String clave;
@@ -41,21 +49,29 @@ public class Usuario{
 
     }
 
-    public boolean verificar_usuario(String[][] base, int largo){
+    public boolean verificar_usuario(ArrayList<String> usuarios, String nombre){
         boolean valido = true;
-        for (int i = 0; i<largo;i++){
-            System.out.print(base[i][0] +"== "+ this.nombre);
-            if(base[i][0].equals(nombre)){
+        for(String x: usuarios)
+        {
+            String[] datos = x.split(",");
+            String nombreA = datos[0];
+            if(nombre.equals(nombreA))
+            {
                 valido = false;
             }
         }
         return valido;
     }
 
-    public boolean verificar_acceso(String[][] base, int largo){
+    public boolean verificar_acceso(ArrayList<String> usuarios, String nombre, String contra){
         boolean valido = false;
-        for (int i = 0; i<largo;i++){
-            if(base[i][0].equals(nombre) && base[i][1].equals(clave)){
+        for(String x: usuarios)
+        {
+            String[] datos = x.split(",");
+            String nombreA = datos[0];
+            String contraA = datos[1];
+            if(nombre.equals(nombreA) && contra.equals(contraA))
+            {
                 valido = true;
             }
         }
