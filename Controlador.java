@@ -1,3 +1,9 @@
+/**
+ * Clase Controlador. Será la encargada de realizar las tareas correspondientes al nuestro programa.
+ * Grupo #1. POO
+ * 16 de noviembre de 2021
+ * @version 1
+ */
 
 import java.util.*;
 
@@ -5,7 +11,7 @@ public class Controlador
 {
     private Donacion donacion = new Donacion();
     private Usuario perfil;
-    private Archivos usuarioscsv = new Archivos("prueba.csv");
+    private Archivos usuarioscsv = new Archivos("usuarios.csv");
     private ArrayList<String> listaUsuarios = new ArrayList<String>();
     private Archivos centroscsv = new Archivos("centros.csv");
     
@@ -41,9 +47,11 @@ public class Controlador
         this.usuarioscsv.escribir_archivo(textoanterior);
     }
 
-    public void leerCentrosMedicos(){
-        ArrayList<String> centrosTexto = centroscsv.lectura();	
-        for (int i = 0; i<centrosTexto.size(); i++){
+    public void leerCentrosMedicos()
+    {
+        ArrayList<String> centrosTexto = centroscsv.lectura();
+        for (int i = 0; i < centrosTexto.size(); i++)
+        {
             String[] centro = centrosTexto.get(i).split(",");
             String nombre = centro[0];
             Double dinero = Double.parseDouble(centro[1]);
@@ -63,6 +71,9 @@ public class Controlador
 
     public void agregarCento(centroMedico centro)
     {
+        ArrayList<String> textoanterior = centroscsv.lectura();
+        textoanterior.add(centro.getNombre() + "," + centro.getDinero() + "," +  centro.getNumero() + "," + centro.getUbicacion() + "," + centro.getTanquesOxigeno() + "," + centro.getComida() + "," + centro.getCamas() + "," + centro.getPacientes() + "," + centro.getDoctores() + "," + centro.getMedicina());
+        this.centroscsv.escribir_archivo(textoanterior);
         this.centros.add(centro);
     }
 
@@ -79,7 +90,7 @@ public class Controlador
         {
             info += "\nCentro medico No. " + contador;
             info += "\n\tNombre del centro: " + k.getNombre();
-            info += "\n\tLocalización del centro: " + k.getUbicacion();
+            info += "\n\tLocalizacion del centro: " + k.getUbicacion();
             info += "\n\tNumero de telefono del centro: " + k.getNumero();
             info += "\n\tCantidad de doctores del centro: " + k.getDoctores();
             info += "\n\tCantidad de pacientes del centro: " + k.getPacientes();

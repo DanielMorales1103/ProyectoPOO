@@ -4,12 +4,12 @@
  * 22 de octubre de 2021
  * @version 3
  */
+
 import java.util.Scanner;
 import java.util.*;
-public class Principal
-{
 
-    
+public class Principal
+{    
     /** 
      * @param args
      */
@@ -19,11 +19,10 @@ public class Principal
         Controlador controlador = new Controlador();
 
         Donacion donacion = new Donacion();
-        //ArrayList<centroMedico> centros = new ArrayList<centroMedico>();
         Usuario perfil;
-        Archivos archivo = new Archivos("prueba.csv");
-        //ArrayList<String> usuarios = archivo.lectura();
-        boolean hayArchivo = false;
+        
+        boolean hayArchivoU = false;
+        boolean hayArchivoC = false;
 
         String nombre = "";
         String ubicacion = "";
@@ -31,7 +30,6 @@ public class Principal
         int pacientes = 0;
         String numero = "";
         int doctores = 0;
-        
         double dinero = 0;
         int medicinas = 0;
         int ropaH = 0;
@@ -53,15 +51,23 @@ public class Principal
 
         boolean perfilvalido = false;
         boolean usuariovalido = false;
-        boolean clavevalida= false;
+        boolean clavevalida = false;
 
-        if(!hayArchivo)
+        if(!hayArchivoU)
         {
-            archivo.crear_archivo(); 
-            hayArchivo = true;
+            controlador.crearArchivo(new Archivos("usuarios.csv"));
+            hayArchivoU = true;
         }
-        System.out.println("\nBienvenido, este programa está orientado para poder suministrar a los centros de salud más necesitados de\nGuatemala en estos tiempos de pandemia. Se buscará abastecer a los centros de salud más afectados, buscando de una\nforma equitativa distribuir los recursos con los que se cuenta.\n");
 
+        if(!hayArchivoC)
+        {
+            controlador.crearArchivo(new Archivos("centros.csv"));
+            hayArchivoC = true;
+        }
+
+        System.out.println("\nBienvenido, este programa esta orientado para poder suministrar a los centros de salud mas necesitados de\nGuatemala en estos tiempos de pandemia. Se buscara abastecer a los centros de salud mas afectados, buscando de una\nforma equitativa distribuir los recursos con los que se cuenta.\n");
+
+        controlador.leerCentrosMedicos();
 
         //Código para iniciar sesión, siempre antes de entrar a cualquier otro proceso.
         while(sesion)
@@ -69,41 +75,35 @@ public class Principal
             respuesta = pregunta("\nMenu:\n1. Iniciar sesion.\n2. Crear usuario.\n3. Cancelar.\nRespuesta: ", 3);
             switch (respuesta) {
                 case 1:
-                    System.out.println("Ingrese su nombre de usuario");
+                    System.out.println("\nIngrese su nombre de usuario: ");
                     usuario = scanner.nextLine();
-                    System.out.println("Ingrese su contraseña");
+                    System.out.println("\nIngrese su contrasena: ");
                     contra = scanner.nextLine();
                     perfil = new Usuario(usuario, contra);                 
-                    //perfilvalido =  perfil.verificar_acceso(usuarios, usuario, contra);
                     perfilvalido = controlador.verificarAcceso(perfil, usuario, contra);
                     if(perfilvalido){
-                        System.out.println("Bienvenido: "+usuario);
+                        System.out.println("\nBienvenido: " + usuario);
                         sesion = false;
                         buclePrincipal = true;
                     }else{
-                        System.out.println("Perfil no valido");
+                        System.out.println("\nUsuario o contrasena no valido.");
                     }
                     break;
                 case 2:
-                    System.out.println("Ingrese su nombre de usuario");
+                    System.out.println("\nIngrese su nombre de usuario: ");
                     usuario = scanner.nextLine();
-                    System.out.println("Ingrese su contraseña");
+                    System.out.println("\nIngrese su contrasena: ");
                     contra = scanner.nextLine();
                     perfil = new Usuario(usuario, contra);
-                    //usuariovalido = perfil.verificar_usuario(usuarios, usuario);
-                    //clavevalida = perfil.verificar_clave();
                     usuariovalido = controlador.verficarUsuario(perfil, usuario);
                     clavevalida = controlador.verificarClave(perfil);
                     //hacer el ingreso al archivo si los dos son true
                     if (usuariovalido && clavevalida){
-                        System.out.println("Usuario valido");
-                        //ArrayList<String> textoanterior = archivo.lectura();
-                        //textoanterior.add(usuario + "," + contra);
-                        //archivo.escribir_archivo(textoanterior);
+                        System.out.println("\nUsuario valido.");
                         controlador.agregarUsuario(perfil);
-                        System.out.println("Bienvenido: "+ usuario);
+                        System.out.println("\nBienvenido: "+ usuario);
                     }else{
-                        System.out.println("Usuario o contrasena invalido");
+                        System.out.println("\nUsuario o contrasena invalido.");
                     }
                     break;
 
@@ -118,25 +118,25 @@ public class Principal
 
         while(buclePrincipal)
         {
-                respuesta = pregunta("\nMenu:\n1. Agregar nuevo centro médico.\n2. Donacion.\n3. Mostrar datos de los centros medicos. \n4. Cerrar sesion.\nRespuesta: ", 4);
+                respuesta = pregunta("\nMenu:\n1. Agregar nuevo centro medico.\n2. Donacion.\n3. Mostrar datos de los centros medicos. \n4. Cerrar sesion.\nRespuesta: ", 4);
                 switch(respuesta)
                 {
                     case 1:
                     //Codigo para agregar centro medico
                     System.out.println("\n---Agregar nuevo centro medico.---\n");
 
-                    System.out.println("\nIngrese el nombre del centro médico: ");
+                    System.out.println("\nIngrese el nombre del centro medico: ");
                     nombre = scanner.nextLine();
-                    System.out.println("\nIngrese la dirección del centro médico: ");
+                    System.out.println("\nIngrese la direccion del centro medico: ");
                     ubicacion = scanner.nextLine();
-                    System.out.println("\nIngrese el número telefónico del centro médico: ");
+                    System.out.println("\nIngrese el numero telefonico del centro medico: ");
                     numero = scanner.nextLine();
 
                     bucle = true;
                     while(bucle)
                     {
                         try {
-                            System.out.println("\nIngrese la cantidad de pacientes que se encuentran en este centro médico: ");
+                            System.out.println("\nIngrese la cantidad de pacientes que se encuentran en este centro medico: ");
                             pacientes= scanner.nextInt();
                             scanner.nextLine();
                             bucle = false;
@@ -159,7 +159,7 @@ public class Principal
                     while(bucle)
                     {
                         try {
-                            System.out.println("\nIngrese la cantidad de camas con las que cuenta este centro médico: ");
+                            System.out.println("\nIngrese la cantidad de camas con las que cuenta este centro medico: ");
                             camas= scanner.nextInt();
                             scanner.nextLine();
                             bucle = false;
@@ -179,7 +179,7 @@ public class Principal
                     while(bucle)
                     {
                         try {
-                            System.out.println("\nIngrese la cantidad de medicina con la que cuenta este centro médico (en general, cual es la suma de medicina): ");
+                            System.out.println("\nIngrese la cantidad de medicina con la que cuenta este centro medico (en general, cual es la suma de medicina): ");
                             medicinas= scanner.nextInt();
                             scanner.nextLine();
                             bucle = false;
@@ -199,7 +199,7 @@ public class Principal
                     while(bucle)
                     {
                         try {
-                            System.out.println("\nIngrese la cantidad de médicos con los que cuenta este centro médico: ");
+                            System.out.println("\nIngrese la cantidad de medicos con los que cuenta este centro medico: ");
                             doctores = scanner.nextInt();
                             scanner.nextLine();
                             bucle = false;
@@ -219,7 +219,7 @@ public class Principal
                     while(bucle)
                     {
                         try {
-                            System.out.println("\nIngrese la cantidad de tanques de oxígeno con los que cuenta este centro médico: ");
+                            System.out.println("\nIngrese la cantidad de tanques de oxigeno con los que cuenta este centro medico: ");
                             tanquesOxigeno = scanner.nextInt();
                             scanner.nextLine();
                             bucle = false;
@@ -239,7 +239,7 @@ public class Principal
                     while(bucle)
                     {
                         try {
-                            System.out.println("\nIngrese la cantidad de comida con la que cuenta este centro médico (cantidad de platos de comida): ");
+                            System.out.println("\nIngrese la cantidad de comida con la que cuenta este centro medico (cantidad de platos de comida): ");
                             comida= scanner.nextInt();
                             scanner.nextLine();
                             bucle = false;
@@ -451,24 +451,8 @@ public class Principal
                     if(controlador.getCentros().size() > 0)
                     {
                         System.out.println(controlador.verCentros());
-                        /*
-                        for(centroMedico k: centros)
-                        {
-                            System.out.print("\nNombre del centro: " + k.getNombre());
-                            System.out.print("\nLocalización del centro: " + k.getUbicacion());
-                            System.out.print("\nNumero de telefono del centro: " + k.getNumero());
-                            System.out.print("\nCantidad de doctores del centro: " + k.getDoctores());
-                            System.out.print("\nCantidad de pacientes del centro: " + k.getPacientes());
-                            System.out.print("\nCantidad de camas del centro: " + k.getCamas());
-                            System.out.print("\nCantidad de comida del centro: " + k.getComida());
-                            System.out.print("\nCantidad de tanques del centro: " + k.getTanquesOxigeno());
-                            System.out.print("\nMedicinas del centro: " + k.getMedicina());
-                            System.out.print("\nFondos del centro: Q" + k.getDinero());
-                        }
-                        */
                     }
                     else System.out.println("\nNo se cuenta con centros medicos aun.\n");
-                        
                         
                         break;
 
@@ -477,13 +461,13 @@ public class Principal
                         break;
                     
                     default:
-                    System.out.println("Ingrese una opcion valida.\n");
+                    System.out.println("\nIngrese una opcion valida.\n");
                 }
         }
         
         scanner.close();
         System.out.println("\n¡Agradecemos muchisimo tu donacion. Sera de gran ayuda para muchas personas!");
-        System.out.println("Recuerda cuidarte a ti y a tus seres queridos. Utiliza la mascarilla todo el tiempo");
+        System.out.println("\nRecuerda cuidarte a ti y a tus seres queridos. Utiliza la mascarilla todo el tiempo.");
     }
 
     
@@ -505,10 +489,10 @@ public class Principal
                 respuesta = scanner.nextInt();
                 scanner.nextLine();
                 if(respuesta > 0 && respuesta <= opciones) bucle = false;
-                else System.out.println("Repusta no valida.\n");
+                else System.out.println("\nRepuesta no valida.");
             }    
         } catch (Exception e) {
-            System.out.println("Repuesta no valida. Ingrese solamente numeros.\n");
+            System.out.println("\nRepuesta no valida. Ingrese solamente numeros.");
             respuesta = pregunta(pregunta, opciones);
         }
         return respuesta;
