@@ -19,10 +19,10 @@ public class Principal
         Controlador controlador = new Controlador();
 
         Donacion donacion = new Donacion();
-        ArrayList<centroMedico> centros = new ArrayList<centroMedico>();
+        //ArrayList<centroMedico> centros = new ArrayList<centroMedico>();
         Usuario perfil;
         Archivos archivo = new Archivos("prueba.csv");
-        ArrayList<String> usuarios = archivo.lectura();
+        //ArrayList<String> usuarios = archivo.lectura();
         boolean hayArchivo = false;
 
         String nombre = "";
@@ -50,9 +50,8 @@ public class Principal
 
         String usuario="";
         String contra="";
-        int largo = 0;
 
-        boolean perfilvalido = true;
+        boolean perfilvalido = false;
         boolean usuariovalido = false;
         boolean clavevalida= false;
 
@@ -276,8 +275,9 @@ public class Principal
                         }
                     }
                     centroMedico centro = new centroMedico(nombre, dinero, numero, ubicacion, tanquesOxigeno, comida, camas, pacientes, doctores, medicinas);
-                    centros.add(centro);
-                    //centroMedico.agregarCentro(nombre, unbicacion, capacidadAtencion, medicos, camas, medicinas, ropaH, ropaM, savanas, comida, tanquesOxigeno, pacientes, dinero);
+                    //centros.add(centro);
+                    controlador.agregarCento(centro);
+
                         break;
 
                     case 2:
@@ -448,8 +448,10 @@ public class Principal
                         break;
                     
                     case 3:
-                    if(centros.size() > 0)
+                    if(controlador.getCentros().size() > 0)
                     {
+                        System.out.println(controlador.verCentros());
+                        /*
                         for(centroMedico k: centros)
                         {
                             System.out.print("\nNombre del centro: " + k.getNombre());
@@ -463,8 +465,9 @@ public class Principal
                             System.out.print("\nMedicinas del centro: " + k.getMedicina());
                             System.out.print("\nFondos del centro: Q" + k.getDinero());
                         }
+                        */
                     }
-                    else System.out.println("No se cuenta con centros medicos aun.\n");
+                    else System.out.println("\nNo se cuenta con centros medicos aun.\n");
                         
                         
                         break;
