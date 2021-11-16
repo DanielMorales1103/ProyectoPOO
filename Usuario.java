@@ -24,11 +24,14 @@ public class Usuario{
         boolean numero = false;
         boolean especial = false;
         boolean espacio = true;
+        boolean coma = true;
         if(clave.length()>=8){
             largo = true;
             for (int i =0; i< clave.length() ;i++){
                 char caracter = clave.charAt(i);
-                if(caracter >=65 && caracter <=90){
+                if(caracter == 44){
+                    coma = false;
+                }else if(caracter >=65 && caracter <=90){
                     mayuscula = true;
                 }else if (caracter >=97 && caracter <=122){
                     minuscula = true;
@@ -41,7 +44,7 @@ public class Usuario{
                 }
             }
         }
-        if (mayuscula && minuscula && numero && especial && espacio && largo){
+        if (mayuscula && minuscula && numero && especial && espacio && largo && coma){
             return true;
         }else{
             return false;
