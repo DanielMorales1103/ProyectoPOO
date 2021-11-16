@@ -97,7 +97,9 @@ public class Principal
                     //hacer el ingreso al archivo si los dos son true
                     if (usuariovalido && clavevalida){
                         System.out.println("Usuario valido");
-                        archivo.escribir_archivo(usuario + "," + contra);
+                        ArrayList<String> textoanterior = archivo.lectura();
+                        textoanterior.add(usuario + "," + contra);
+                        archivo.escribir_archivo(textoanterior);
                         System.out.println("Bienvenido: "+ usuario);
                     }else{
                         System.out.println("Usuario invalido");
