@@ -33,10 +33,12 @@ public class Archivos{
         
     }
 
-    public String escribir_archivo(String texto){        //hacer una lectura y agregar el texto al final luego rrenviar todo el texto
+    public String escribir_archivo(ArrayList<String> texto){        //hacer una lectura y agregar el texto al final luego rrenviar todo el texto
         try {
             fw = new FileWriter(nombre);
-            fw.append(texto+"\n");
+            for (int i =0; i<texto.size();i++){
+                fw.write(texto.get(i)+"\n");
+            }
             fw.close();
             return "Escrito correctamente";
         } catch (IOException e) {
