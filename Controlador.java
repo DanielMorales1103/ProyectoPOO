@@ -39,5 +39,24 @@ public class Controlador
         this.usuarioscsv.escribir_archivo(textoanterior);
     }
 
+    public void leerCentrosMedicos(){
+        ArrayList<String> centrosTexto = centroscsv.lectura();	
+        for (int i = 0; i<centrosTexto.size(); i++){
+            String[] centro = centrosTexto.split(",");
+            String nombre = centro[0];
+            Double dinero = centro[1];
+            String numero = centro[2];
+            String ubicacion = centro[3];
+            int tanquesOxigeno = centro[4];
+            int comida = centro[5];
+            int camas = centro[6];
+            int pacientes = centro[7];
+            int doctores = centro[8];
+            int medicina s= centro[9];
+            
+            centroMedico CM = new centroMedico(nombre, dinero, numero, ubicacion, tanquesOxigeno, comida, camas, pacientes, doctores, medicina);
+            centros.add(CM);
+        }
+    }
 
 }
