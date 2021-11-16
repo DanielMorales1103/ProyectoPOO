@@ -5,7 +5,7 @@ public class Controlador
 {
     private Donacion donacion = new Donacion();
     private Usuario perfil;
-    private Archivos usuarioscsv = new Archivos("usuarios.csv");
+    private Archivos usuarioscsv = new Archivos("prueba.csv");
     private ArrayList<String> listaUsuarios = new ArrayList<String>();
     private Archivos centroscsv = new Archivos("centros.csv");
     
@@ -32,4 +32,12 @@ public class Controlador
         return perfil.verificar_clave();
     }
     
+    public void agregarUsuario(Usuario perfil) //Linea 100
+    {
+        ArrayList<String> textoanterior = usuarioscsv.lectura();
+        textoanterior.add(perfil.getNombre() + "," + perfil.getClave());
+        this.usuarioscsv.escribir_archivo(textoanterior);
+    }
+
+
 }

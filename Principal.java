@@ -16,10 +16,11 @@ public class Principal
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
+        Controlador controlador = new Controlador();
+
         Donacion donacion = new Donacion();
         ArrayList<centroMedico> centros = new ArrayList<centroMedico>();
         Usuario perfil;
-        String[][] perfiles = new String[1000][2];
         Archivos archivo = new Archivos("prueba.csv");
         ArrayList<String> usuarios = archivo.lectura();
         boolean hayArchivo = false;
@@ -73,11 +74,9 @@ public class Principal
                     usuario = scanner.nextLine();
                     System.out.println("Ingrese su contraseña");
                     contra = scanner.nextLine();
-                    perfil = new Usuario(usuario, contra);
-                    //perfiles[0][0] = "Admin";
-                    //perfiles[0][1] = "Hola1234+";
-                    //largo = perfil.cantidad(perfiles);                  
-                    perfilvalido =  perfil.verificar_acceso(usuarios, usuario, contra);
+                    perfil = new Usuario(usuario, contra);                 
+                    //perfilvalido =  perfil.verificar_acceso(usuarios, usuario, contra);
+                    perfilvalido = controlador.verificarAcceso(perfil, usuario, contra);
                     if(perfilvalido){
                         System.out.println("Bienvenido: "+usuario);
                         sesion = false;
@@ -92,17 +91,20 @@ public class Principal
                     System.out.println("Ingrese su contraseña");
                     contra = scanner.nextLine();
                     perfil = new Usuario(usuario, contra);
-                    usuariovalido = perfil.verificar_usuario(usuarios, usuario);
-                    clavevalida = perfil.verificar_clave();
+                    //usuariovalido = perfil.verificar_usuario(usuarios, usuario);
+                    //clavevalida = perfil.verificar_clave();
+                    usuariovalido = controlador.verficarUsuario(perfil, usuario);
+                    clavevalida = controlador.verificarClave(perfil);
                     //hacer el ingreso al archivo si los dos son true
                     if (usuariovalido && clavevalida){
                         System.out.println("Usuario valido");
-                        ArrayList<String> textoanterior = archivo.lectura();
-                        textoanterior.add(usuario + "," + contra);
-                        archivo.escribir_archivo(textoanterior);
+                        //ArrayList<String> textoanterior = archivo.lectura();
+                        //textoanterior.add(usuario + "," + contra);
+                        //archivo.escribir_archivo(textoanterior);
+                        controlador.agregarUsuario(perfil);
                         System.out.println("Bienvenido: "+ usuario);
                     }else{
-                        System.out.println("Usuario invalido");
+                        System.out.println("Usuario o contrasena invalido");
                     }
                     break;
 
