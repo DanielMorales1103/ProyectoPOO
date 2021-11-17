@@ -4,20 +4,31 @@
  * 22 de octubre de 2021
  * @version 3
  */
+
 import java.util.*;
 
 public class Usuario{
     private String nombre;
     private String clave;
 
-    Usuario(String nombre, String clave){
+    public Usuario(String nombre, String clave)
+    {
         this.nombre = nombre;
         this.clave = clave;
     }
 
+    public String getNombre()
+    {
+        return this.nombre;
+    }
 
+    public String getClave()
+    {
+        return this.clave;
+    }
 
-    public boolean verificar_clave(){
+    public boolean verificar_clave()
+    {
         boolean largo = false;
         boolean mayuscula = false;
         boolean minuscula = false;
@@ -44,15 +55,16 @@ public class Usuario{
                 }
             }
         }
-        if (mayuscula && minuscula && numero && especial && espacio && largo && coma){
+        if (mayuscula && minuscula && numero && especial && espacio && largo && coma)
+        {
             return true;
         }else{
             return false;
         }
-
     }
 
-    public boolean verificar_usuario(ArrayList<String> usuarios, String nombre){
+    public boolean verificar_usuario(ArrayList<String> usuarios, String nombre)
+    {
         boolean valido = true;
         for(String x: usuarios)
         {
@@ -66,7 +78,8 @@ public class Usuario{
         return valido;
     }
 
-    public boolean verificar_acceso(ArrayList<String> usuarios, String nombre, String contra){
+    public boolean verificar_acceso(ArrayList<String> usuarios, String nombre, String contra)
+    {
         boolean valido = false;
         for(String x: usuarios)
         {
@@ -80,16 +93,4 @@ public class Usuario{
         }
         return valido;
     }
-
-    public int cantidad(String[][] base){
-        int cont = 0;
-        int cont2=0;
-        for (int i = 0; i<base.length;i++){
-            if(base[i][0] != null){
-                cont++;
-            }
-        }
-        return cont;
-    }
-
 }
