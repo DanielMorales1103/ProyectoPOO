@@ -26,7 +26,6 @@ public class Principal
 
         String nombre = "";
         String ubicacion = "";
-        int capacidadAtencion = 0;
         int pacientes = 0;
         String numero = "";
         int doctores = 0;
@@ -46,8 +45,8 @@ public class Principal
         boolean sesion = true;
         boolean bucle = true;
 
-        String usuario="";
-        String contra="";
+        String usuario = "";
+        String contra = "";
 
         boolean perfilvalido = false;
         boolean usuariovalido = false;
@@ -89,6 +88,7 @@ public class Principal
                         System.out.println("\nUsuario o contrasena no valido.");
                     }
                     break;
+
                 case 2:
                     System.out.println("\nIngrese su nombre de usuario: ");
                     usuario = scanner.nextLine();
@@ -97,7 +97,6 @@ public class Principal
                     perfil = new Usuario(usuario, contra);
                     usuariovalido = controlador.verficarUsuario(perfil, usuario);
                     clavevalida = controlador.verificarClave(perfil);
-                    //hacer el ingreso al archivo si los dos son true
                     if (usuariovalido && clavevalida){
                         System.out.println("\nUsuario valido.");
                         controlador.agregarUsuario(perfil);
@@ -275,7 +274,6 @@ public class Principal
                         }
                     }
                     centroMedico centro = new centroMedico(nombre, dinero, numero, ubicacion, tanquesOxigeno, comida, camas, pacientes, doctores, medicinas);
-                    //centros.add(centro);
                     controlador.agregarCento(centro);
 
                         break;
@@ -450,7 +448,54 @@ public class Principal
                     case 3:
                     if(controlador.getCentros().size() > 0)
                     {
-                        System.out.println(controlador.verCentros());
+                        x = pregunta("\n¿Desea ordenar los centros medicos?\n1. Si.\n2. No.\nRespuesta: ", 2);
+                        if(x == 1)
+                        {
+                            respuesta = pregunta("\n¿Como desea ordenarlos? Por la cantidad de:\n1. Fondos.\n2. Medicina.\n3. Tanques de oxigeno.\n4. Platos de comida.\n5. Pacientes.\n6. Doctores.\n7. Camas.\nRespuesta: ", 7);
+                            switch (respuesta) {
+                                case 1:
+                                    controlador.ordenarDinero();
+                                    System.out.println(controlador.verCentros(controlador.getCmDinero()));
+                                    break;
+
+                                case 2:
+                                    controlador.ordenarMedicina();
+                                    System.out.println(controlador.verCentros(controlador.getCmMedicina()));
+                                    break;
+                            
+                                case 3:
+                                    controlador.ordenarTanques();
+                                    System.out.println(controlador.verCentros(controlador.getCmTanques()));
+                                    break;
+
+                                case 4:
+                                    controlador.ordenarComida();
+                                    System.out.println(controlador.verCentros(controlador.getCmComida()));
+                                    break;
+                                
+                                case 5:
+                                    controlador.ordenarPaciente();
+                                    System.out.println(controlador.verCentros(controlador.getCmPacientes()));
+                                    break;
+
+                            
+                                case 6:
+                                    controlador.ordenarDoctores();
+                                    System.out.println(controlador.verCentros(controlador.getCmDoctores()));
+                                    break;
+
+                                case 7:
+                                    controlador.ordenarCamas();
+                                    System.out.println(controlador.verCentros(controlador.getCmCamas()));
+                                    break;
+
+
+                                default:
+                                    break;
+                            }
+                        }
+                        else System.out.println(controlador.verCentros(controlador.getCentros()));
+                        
                     }
                     else System.out.println("\nNo se cuenta con centros medicos aun.\n");
                         
