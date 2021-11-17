@@ -14,6 +14,13 @@ public class Controlador
     private Archivos usuarioscsv = new Archivos("usuarios.csv");
     private ArrayList<String> listaUsuarios = new ArrayList<String>();
     private Archivos centroscsv = new Archivos("centros.csv");
+    private ArrayList<centroMedico> cmDinero = new ArrayList<centroMedico>();
+    private ArrayList<centroMedico> cmMedicina = new ArrayList<centroMedico>();
+    private ArrayList<centroMedico> cmTanques = new ArrayList<centroMedico>();
+    private ArrayList<centroMedico> cmComida = new ArrayList<centroMedico>();
+    private ArrayList<centroMedico> cmPacientes = new ArrayList<centroMedico>();
+    private ArrayList<centroMedico> cmDoctores = new ArrayList<centroMedico>();
+    private ArrayList<centroMedico> cmCamas = new ArrayList<centroMedico>();
     
     private ArrayList<centroMedico> centros = new ArrayList<centroMedico>();
     private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
@@ -49,7 +56,7 @@ public class Controlador
 
     public void leerCentrosMedicos()
     {
-        ArrayList<String> centrosTexto = centroscsv.lectura();
+        ArrayList<String> centrosTexto = this.centroscsv.lectura();
         for (int i = 0; i < centrosTexto.size(); i++)
         {
             String[] centro = centrosTexto.get(i).split(",");
@@ -82,11 +89,11 @@ public class Controlador
         return this.centros;
     }
 
-    public String verCentros()
+    public String verCentros(ArrayList<centroMedico> centros)
     {
         String info = "";
         int contador = 1;
-        for(centroMedico k: this.centros)
+        for(centroMedico k: centros)
         {
             info += "\nCentro medico No. " + contador;
             info += "\n\tNombre del centro: " + k.getNombre();
@@ -105,4 +112,80 @@ public class Controlador
         return info;
     }
 
+    public void ordenarDinero()
+    {
+        this.cmDinero = this.centros;
+        Collections.sort(this.cmDinero, new CompararDinero());
+    }
+
+    public ArrayList<centroMedico> getCmDinero()
+    {
+        return this.cmDinero;
+    }
+
+    public void ordenarTanques()
+    {
+        this.cmTanques = this.centros;
+        Collections.sort(this.cmTanques, new CompararTanques());
+    }
+
+    public ArrayList<centroMedico> getCmTanques()
+    {
+        return this.cmTanques;
+    }
+
+    public void ordenarCamas()
+    {
+        this.cmCamas = this.centros;
+        Collections.sort(this.cmCamas, new CompararCamas());
+    }
+
+    public ArrayList<centroMedico> getCmCamas()
+    {
+        return this.cmCamas;
+    }
+
+    public void ordenarComida()
+    {
+        this.cmComida = this.centros;
+        Collections.sort(this.cmComida, new CompararComida());
+    }    
+
+    public ArrayList<centroMedico> getCmComida()
+    {
+        return this.cmComida;
+    }
+
+    public void ordenarDoctores()
+    {
+        this.cmDoctores = this.centros;
+        Collections.sort(this.cmDoctores, new CompararDoctores());
+    }
+
+    public ArrayList<centroMedico> getCmDoctores()
+    {
+        return this.cmDoctores;
+    }
+
+    public void ordenarMedicina()
+    {
+        this.cmMedicina = this.centros;
+        Collections.sort(this.cmMedicina, new CompararMedicinas());
+    }
+
+    public ArrayList<centroMedico> getCmMedicina()
+    {
+        return this.cmMedicina;
+    }
+
+    public void ordenarPaciente()
+    {
+        this.cmPacientes = this.centros;
+        Collections.sort(this.cmPacientes, new CompararPacientes());
+    }
+
+    public ArrayList<centroMedico> getCmPacientes()
+    {
+        return this.cmPacientes;
+    }
 }
