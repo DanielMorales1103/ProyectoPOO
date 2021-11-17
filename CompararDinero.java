@@ -1,0 +1,23 @@
+/**
+ * Clase CompararDinero. Será la encargada ordenar por los fondos del centro medico, utilizando compare  en el ArrayList de centroMedico
+ * Grupo #1. POO
+ * 17 de noviembre de 2021
+ * @version 1
+ */
+
+import java.util.Comparator;
+
+public class CompararDinero implements Comparator<centroMedico>
+{
+    /** 
+     * @param o1
+     * @param o2
+     * @return int
+     */
+    @Override
+    public int compare(centroMedico o1, centroMedico o2) {
+        if(o1.getDinero() > o2.getDinero()) return -1;
+        else if(o1.getDinero() > o2.getDinero()) return 0;
+        else return 1;
+    }
+}
