@@ -80,8 +80,8 @@ public class Controlador
     {
         ArrayList<String> textoanterior = centroscsv.lectura();
         textoanterior.add(centro.getNombre() + "," + centro.getDinero() + "," +  centro.getNumero() + "," + centro.getUbicacion() + "," + centro.getTanquesOxigeno() + "," + centro.getComida() + "," + centro.getCamas() + "," + centro.getPacientes() + "," + centro.getDoctores() + "," + centro.getMedicina());
-        this.centroscsv.escribir_archivo(textoanterior);
         this.centros.add(centro);
+        this.centroscsv.escribir_archivo(textoanterior);
     }
 
     public ArrayList<centroMedico> getCentros()
