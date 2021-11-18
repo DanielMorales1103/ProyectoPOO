@@ -275,7 +275,7 @@ public class Principal
                     }
                     centroMedico centro = new centroMedico(nombre, dinero, numero, ubicacion, tanquesOxigeno, comida, camas, pacientes, doctores, medicinas);
                     controlador.agregarCento(centro);
-
+                    
                         break;
 
                     case 2:
