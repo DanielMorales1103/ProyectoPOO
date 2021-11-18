@@ -189,7 +189,6 @@ public class Controlador
         return this.cmPacientes;
     }
     public void SobreescribirCentros(){
-        //centro.getNombre() + "," + centro.getDinero() + "," +  centro.getNumero() + "," + centro.getUbicacion() + "," + centro.getTanquesOxigeno() + "," + centro.getComida() + "," + centro.getCamas() + "," + centro.getPacientes() + "," + centro.getDoctores() + "," + centro.getMedicina()
         ArrayList<String> escribircentros = new ArrayList<String>();
         String txt;
         for (int i = 0; i<centros.size();i++){
