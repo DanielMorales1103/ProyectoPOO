@@ -18,7 +18,6 @@ public class Principal
         Scanner scanner = new Scanner(System.in);
         Controlador controlador = new Controlador();
 
-        Donacion donacion = new Donacion();
         Usuario perfil;
         
         boolean hayArchivoU = false;
@@ -279,7 +278,7 @@ public class Principal
                         break;
 
                     case 2:
-                    x = pregunta("\n¿Que tipo de donacion desea realizar?\n1. Monetaria\n\t-Cantidad Q.\n2. Suministros:\n\t-Medicinas.\n\t-Ropa hombre.\n\t-Ropa mujer.\n\t-Camas.\n\t-Comida.\n\t-Tanques de oxigeno.\nRespuesta: ", 2);
+                    x = pregunta("\n¿Que tipo de donacion desea realizar?\n1. Monetaria\n\t-Cantidad Q.\n2. Suministros:\n\t-Medicinas.\n\t-Camas.\n\t-Comida.\n\t-Tanques de oxigeno.\nRespuesta: ", 2);
                     switch(x)
                     {
                         case 1:
@@ -290,7 +289,8 @@ public class Principal
                                 System.out.println("\nPor favor, ingrese el monto a donar en Quetzales\nRepuesta: ");
                                 dinero = scanner.nextDouble();
                                 scanner.nextLine();
-                                System.out.println(donacion.monetaria(dinero));
+                                System.out.println(controlador.donarDinero(dinero));
+                                
                                 bucle = false;                        
                             } catch (Exception e) {
                                 System.out.println("\nPor favor, ingrese solamente numeros.");
@@ -305,28 +305,8 @@ public class Principal
                         while(bucle)
                         {
                             try {
-                                System.out.println("\nIngrese la cantidad de camas que donara: ");
-                                camas= scanner.nextInt();
-                                scanner.nextLine();
-                                bucle = false;
-                                if(camas <= 0)
-                                {
-                                    System.out.println("\nRespuesta no valida.");
-                                    bucle = true;
-                                }                       
-                            } catch (Exception e) {
-                                System.out.println("\nPor favor, ingrese solamente numeros.");
-                                scanner.nextLine();
-                                bucle = true;
-                            }
-                        }
-
-                        bucle = true;
-                        while(bucle)
-                        {
-                            try {
                                 System.out.println("\nIngrese la cantidad de medicina que donara: ");
-                                medicinas= scanner.nextInt();
+                                medicinas = scanner.nextInt();
                                 scanner.nextLine();
                                 bucle = false;
                                 if(medicinas <= 0)
@@ -345,55 +325,15 @@ public class Principal
                         while(bucle)
                         {
                             try {
-                                System.out.println("\nIngrese la cantidad ropa para hombre que donara: ");
-                                ropaH = scanner.nextInt();
+                                System.out.println("\nIngrese la cantidad de camas que donara: ");
+                                camas= scanner.nextInt();
                                 scanner.nextLine();
                                 bucle = false;
-                                if(ropaH <= 0)
+                                if(camas <= 0)
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
-                                }                      
-                            } catch (Exception e) {
-                                System.out.println("\nPor favor, ingrese solamente numeros.");
-                                scanner.nextLine();
-                                bucle = true;
-                            }
-                        }
-
-                        bucle = true;
-                        while(bucle)
-                        {
-                            try {
-                                System.out.println("\nIngrese la cantidad ropa para mujer que donara: ");
-                                ropaM = scanner.nextInt();
-                                scanner.nextLine();
-                                bucle = false;
-                                if(ropaM <= 0)
-                                {
-                                    System.out.println("\nRespuesta no valida.");
-                                    bucle = true;
-                                }                     
-                            } catch (Exception e) {
-                                System.out.println("\nPor favor, ingrese solamente numeros.");
-                                scanner.nextLine();
-                                bucle = true;
-                            }
-                        }
-                        
-                        bucle = true;
-                        while(bucle)
-                        {
-                            try {
-                                System.out.println("\nIngrese la cantidad de tanques de oxigeno que donara: ");
-                                tanquesOxigeno = scanner.nextInt();
-                                scanner.nextLine();
-                                bucle = false;
-                                if(tanquesOxigeno <= 0)
-                                {
-                                    System.out.println("\nRespuesta no valida.");
-                                    bucle = true;
-                                }                     
+                                }                       
                             } catch (Exception e) {
                                 System.out.println("\nPor favor, ingrese solamente numeros.");
                                 scanner.nextLine();
@@ -425,22 +365,27 @@ public class Principal
                         while(bucle)
                         {
                             try {
-                                System.out.println("\nIngrese la cantidad de savanas que donara: ");
-                                sabanas = scanner.nextInt();
+                                System.out.println("\nIngrese la cantidad de tanques de oxigeno que donara: ");
+                                tanquesOxigeno = scanner.nextInt();
                                 scanner.nextLine();
                                 bucle = false;
-                                if(sabanas <= 0)
+                                if(tanquesOxigeno <= 0)
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
-                                }                    
+                                }                     
                             } catch (Exception e) {
                                 System.out.println("\nPor favor, ingrese solamente numeros.");
                                 scanner.nextLine();
                                 bucle = true;
                             }
                         }
-                        System.out.println(donacion.suministros(medicinas, ropaH, ropaM, camas, sabanas, comida, tanquesOxigeno));
+
+                        System.out.println(controlador.donarMedicina(medicinas));
+                        System.out.println(controlador.donarCamas(camas));
+                        System.out.println(controlador.donarComida(comida));
+                        System.out.println(controlador.donarTanques(tanquesOxigeno));
+                        controlador.SobreescribirCentros();
                             break;
                     }
                         break;
@@ -448,44 +393,44 @@ public class Principal
                     case 3:
                     if(controlador.getCentros().size() > 0)
                     {
-                        x = pregunta("\n¿Desea ordenar los centros medicos?\n1. Si.\n2. No.\nRespuesta: ", 2);
+                        x = pregunta("\n¿Desea ordenar los centros medicos de forma descendente?\n1. Si.\n2. No.\nRespuesta: ", 2);
                         if(x == 1)
                         {
                             respuesta = pregunta("\n¿Como desea ordenarlos? Por la cantidad de:\n1. Fondos.\n2. Medicina.\n3. Tanques de oxigeno.\n4. Platos de comida.\n5. Pacientes.\n6. Doctores.\n7. Camas.\nRespuesta: ", 7);
                             switch (respuesta) {
                                 case 1:
-                                    controlador.ordenarDinero();
+                                    controlador.ordenarDinero(); //funciona
                                     System.out.println(controlador.verCentros(controlador.getCmDinero()));
                                     break;
 
                                 case 2:
-                                    controlador.ordenarMedicina();
+                                    controlador.ordenarMedicina();  //funciona
                                     System.out.println(controlador.verCentros(controlador.getCmMedicina()));
                                     break;
                             
                                 case 3:
-                                    controlador.ordenarTanques();
+                                    controlador.ordenarTanques(); //funciona
                                     System.out.println(controlador.verCentros(controlador.getCmTanques()));
                                     break;
 
                                 case 4:
-                                    controlador.ordenarComida();
+                                    controlador.ordenarComida(); //funciona
                                     System.out.println(controlador.verCentros(controlador.getCmComida()));
                                     break;
                                 
                                 case 5:
-                                    controlador.ordenarPaciente();
+                                    controlador.ordenarPaciente(); //funciona
                                     System.out.println(controlador.verCentros(controlador.getCmPacientes()));
                                     break;
 
                             
                                 case 6:
-                                    controlador.ordenarDoctores();
+                                    controlador.ordenarDoctores(); //funciona
                                     System.out.println(controlador.verCentros(controlador.getCmDoctores()));
                                     break;
 
                                 case 7:
-                                    controlador.ordenarCamas();
+                                    controlador.ordenarCamas(); //funciona
                                     System.out.println(controlador.verCentros(controlador.getCmCamas()));
                                     break;
 
