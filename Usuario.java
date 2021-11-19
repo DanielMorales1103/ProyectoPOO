@@ -16,17 +16,26 @@ public class Usuario{
         this.nombre = nombre;
         this.clave = clave;
     }
-
+    
+    /** 
+     * @return String
+     */
     public String getNombre()
     {
         return this.nombre;
     }
-
+    
+    /** 
+     * @return String
+     */
     public String getClave()
     {
         return this.clave;
     }
-
+    
+    /** 
+     * @return boolean
+     */
     public boolean verificar_clave()
     {
         boolean largo = false;
@@ -62,7 +71,12 @@ public class Usuario{
             return false;
         }
     }
-
+    
+    /** 
+     * @param usuarios
+     * @param nombre
+     * @return boolean
+     */
     public boolean verificar_usuario(ArrayList<String> usuarios, String nombre)
     {
         boolean valido = true;
@@ -77,7 +91,13 @@ public class Usuario{
         }
         return valido;
     }
-
+    
+    /** 
+     * @param usuarios
+     * @param nombre
+     * @param contra
+     * @return boolean
+     */
     public boolean verificar_acceso(ArrayList<String> usuarios, String nombre, String contra)
     {
         boolean valido = false;

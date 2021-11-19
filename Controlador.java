@@ -2,7 +2,7 @@
  * Clase Controlador. Será la encargada de realizar las tareas correspondientes al nuestro programa.
  * Grupo #1. POO
  * 16 de noviembre de 2021
- * @version 1
+ * @version 2
  */
 
 import java.util.*;
@@ -23,29 +23,50 @@ public class Controlador
     
     private ArrayList<centroMedico> centros = new ArrayList<centroMedico>();
     private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-
+    
+    /** 
+     * @param archivo
+     */
     public void crearArchivo(Archivos archivo)
     {
         archivo.crear_archivo();
     }
-
+    
+    /** 
+     * @param perfil
+     * @param nombre
+     * @param contra
+     * @return boolean
+     */
     public boolean verificarAcceso(Usuario perfil, String nombre, String contra)
     {
         this.listaUsuarios = this.usuarioscsv.lectura();
         return perfil.verificar_acceso(this.listaUsuarios, nombre, contra);
     }
-
+    
+    /** 
+     * @param perfil
+     * @param nombre
+     * @return boolean
+     */
     public boolean verficarUsuario(Usuario perfil, String nombre)
     {
         this.listaUsuarios = this.usuarioscsv.lectura();
         return perfil.verificar_usuario(this.listaUsuarios, nombre);
     }
-
+    
+    /** 
+     * @param perfil
+     * @return boolean
+     */
     public boolean verificarClave(Usuario perfil)
     {
         return perfil.verificar_clave();
     }
     
+    /** 
+     * @param perfil
+     */
     public void agregarUsuario(Usuario perfil) //Linea 100
     {
         ArrayList<String> textoanterior = usuarioscsv.lectura();
@@ -74,7 +95,11 @@ public class Controlador
             centros.add(CM);
         }
     }
-
+    
+    /** 
+     * @param nombre
+     * @return boolean
+     */
     public boolean verificarNombre(String nombre)
     {
         boolean x = false;
@@ -85,7 +110,10 @@ public class Controlador
         }
         return x;
     }
-
+    
+    /** 
+     * @param centro
+     */
     public void agregarCento(centroMedico centro)
     {
         ArrayList<String> textoanterior = centroscsv.lectura();
@@ -93,12 +121,19 @@ public class Controlador
         this.centros.add(centro);
         this.centroscsv.escribir_archivo(textoanterior);
     }
-
+    
+    /** 
+     * @return ArrayList<centroMedico>
+     */
     public ArrayList<centroMedico> getCentros()
     {
         return this.centros;
     }
-
+    
+    /** 
+     * @param centros
+     * @return String
+     */
     public String verCentros(ArrayList<centroMedico> centros)
     {
         String info = "";
@@ -128,6 +163,9 @@ public class Controlador
         Collections.sort(this.cmDinero, new CompararDinero());
     }
 
+    /** 
+     * @return ArrayList<centroMedico>
+     */
     public ArrayList<centroMedico> getCmDinero()
     {
         return this.cmDinero;
@@ -138,7 +176,10 @@ public class Controlador
         this.cmTanques = this.centros;
         Collections.sort(this.cmTanques, new CompararTanques());
     }
-
+    
+    /** 
+     * @return ArrayList<centroMedico>
+     */
     public ArrayList<centroMedico> getCmTanques()
     {
         return this.cmTanques;
@@ -149,7 +190,10 @@ public class Controlador
         this.cmCamas = this.centros;
         Collections.sort(this.cmCamas, new CompararCamas());
     }
-
+    
+    /** 
+     * @return ArrayList<centroMedico>
+     */
     public ArrayList<centroMedico> getCmCamas()
     {
         return this.cmCamas;
@@ -159,8 +203,11 @@ public class Controlador
     {
         this.cmComida = this.centros;
         Collections.sort(this.cmComida, new CompararComida());
-    }    
-
+    }
+    
+    /** 
+     * @return ArrayList<centroMedico>
+     */
     public ArrayList<centroMedico> getCmComida()
     {
         return this.cmComida;
@@ -171,7 +218,10 @@ public class Controlador
         this.cmDoctores = this.centros;
         Collections.sort(this.cmDoctores, new CompararDoctores());
     }
-
+    
+    /** 
+     * @return ArrayList<centroMedico>
+     */
     public ArrayList<centroMedico> getCmDoctores()
     {
         return this.cmDoctores;
@@ -182,7 +232,10 @@ public class Controlador
         this.cmMedicina = this.centros;
         Collections.sort(this.cmMedicina, new CompararMedicinas());
     }
-
+    
+    /** 
+     * @return ArrayList<centroMedico>
+     */
     public ArrayList<centroMedico> getCmMedicina()
     {
         return this.cmMedicina;
@@ -193,7 +246,10 @@ public class Controlador
         this.cmPacientes = this.centros;
         Collections.sort(this.cmPacientes, new CompararPacientes());
     }
-
+    
+    /** 
+     * @return ArrayList<centroMedico>
+     */
     public ArrayList<centroMedico> getCmPacientes()
     {
         return this.cmPacientes;
@@ -209,6 +265,10 @@ public class Controlador
         centroscsv.escribir_archivo(escribircentros);
     }
 
+    /** 
+     * @param donacion
+     * @return String
+     */
     public String donarDinero(double donacion)
     {
         String info = "";
@@ -228,7 +288,11 @@ public class Controlador
         this.centros = this.cmDinero;
         return info;
     }
-
+    
+    /** 
+     * @param medicinas
+     * @return String
+     */
     public String donarMedicina(int medicinas)
     {
         String info = "";
@@ -253,7 +317,11 @@ public class Controlador
         this.centros = this.cmMedicina;
         return info;
     }
-
+    
+    /** 
+     * @param tanques
+     * @return String
+     */
     public String donarTanques(int tanques)
     {
         String info = "";
@@ -278,7 +346,11 @@ public class Controlador
         this.centros = this.cmTanques;
         return info;
     }
-
+    
+    /** 
+     * @param camas
+     * @return String
+     */
     public String donarCamas(int camas)
     {
         String info = "";
@@ -303,7 +375,11 @@ public class Controlador
         this.centros = this.cmCamas;
         return info;
     }
-
+    
+    /** 
+     * @param comida
+     * @return String
+     */
     public String donarComida(int comida)
     {
         String info = "";

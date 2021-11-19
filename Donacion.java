@@ -2,7 +2,7 @@
  * Clase Donacion, la cual realizará los procesos para el distinto tipo de donacion que haga el usuario
  * Grupo #1. POO
  * 22 de octubre de 2021
- * @version 3
+ * @version 4
  */
 
 public class Donacion 
@@ -12,31 +12,47 @@ public class Donacion
     private int camas = 0;
     private int comida = 0;
     private int tanquesOxigeno = 0;
-
+    
+    /** 
+     * @return int
+     */
     public int getTanques()
     {
         return this.tanquesOxigeno;
     }
-
+    
+    /** 
+     * @return int
+     */
     public int getComida()
     {
         return this.comida;
     }
-
+    
+    /** 
+     * @return int
+     */
     public int getCama()
     {
         return this.camas;
     }
     
+    /** 
+     * @return int
+     */
     public int getMedicinas()
     {
         return this.medicinas;
     }
-
+    
+    /** 
+     * @return double
+     */
     public double getDinero()
     {
         return this.dinero;
     }
+    
     public Donacion()
     {
 
@@ -61,7 +77,6 @@ public class Donacion
         mensaje = "Se ha donado:\nCamas: " + this.camas + "\nMedicinas: " + this.medicinas + "\nRopa para hombres: " + "\nComida: " + this.comida + "\nTanques de oxigeno: " + this.tanquesOxigeno;
         return mensaje;
     }
-
     
     /** 
      * @param dinero

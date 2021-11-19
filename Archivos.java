@@ -37,7 +37,10 @@ public class Archivos
         }
         
     }
-
+    
+    /** 
+     * @param texto
+     */
     public void escribir_archivo(ArrayList<String> texto)        //hacer una lectura y agregar el texto al final luego rrenviar todo el texto
     {
         try {
@@ -50,7 +53,10 @@ public class Archivos
             
         }
     }
-
+    
+    /** 
+     * @return ArrayList<String>
+     */
     public ArrayList<String> lectura()
     {
         ArrayList<String> lista = new ArrayList<String>();
