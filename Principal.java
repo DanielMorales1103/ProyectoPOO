@@ -2,7 +2,7 @@
  * Clase Principal. Será la encargada de interactuar con el usuario, conectará los distintos métodos con este.
  * Grupo #1. POO
  * 22 de octubre de 2021
- * @version 3
+ * @version 4
  */
 
 import java.util.Scanner;
@@ -143,7 +143,7 @@ public class Principal
                             pacientes= scanner.nextInt();
                             scanner.nextLine();
                             bucle = false;
-                            if(pacientes <= 0)
+                            if(pacientes < 0)
                             {
                                 System.out.println("\nRespuesta no valida.");
                                 bucle = true;
@@ -166,7 +166,7 @@ public class Principal
                             camas= scanner.nextInt();
                             scanner.nextLine();
                             bucle = false;
-                            if(camas <= 0)
+                            if(camas < 0)
                             {
                                 System.out.println("\nRespuesta no valida.");
                                 bucle = true;
@@ -186,7 +186,7 @@ public class Principal
                             medicinas= scanner.nextInt();
                             scanner.nextLine();
                             bucle = false;
-                            if(medicinas <= 0)
+                            if(medicinas < 0)
                             {
                                 System.out.println("\nRespuesta no valida.");
                                 bucle = true;
@@ -206,7 +206,7 @@ public class Principal
                             doctores = scanner.nextInt();
                             scanner.nextLine();
                             bucle = false;
-                            if(doctores <= 0)
+                            if(doctores < 0)
                             {
                                 System.out.println("\nRespuesta no valida.");
                                 bucle = true;
@@ -226,7 +226,7 @@ public class Principal
                             tanquesOxigeno = scanner.nextInt();
                             scanner.nextLine();
                             bucle = false;
-                            if(tanquesOxigeno <= 0)
+                            if(tanquesOxigeno < 0)
                             {
                                 System.out.println("\nRespuesta no valida.");
                                 bucle = true;
@@ -246,7 +246,7 @@ public class Principal
                             comida= scanner.nextInt();
                             scanner.nextLine();
                             bucle = false;
-                            if(comida <= 0)
+                            if(comida < 0)
                             {
                                 System.out.println("\nRespuesta no valida.");
                                 bucle = true;
@@ -266,7 +266,7 @@ public class Principal
                             dinero= scanner.nextDouble();
                             scanner.nextLine();
                             bucle = false;
-                            if(dinero <= 0)
+                            if(dinero < 0)
                             {
                                 System.out.println("\nRespuesta no valida.");
                                 bucle = true;
@@ -314,7 +314,7 @@ public class Principal
                                 medicinas = scanner.nextInt();
                                 scanner.nextLine();
                                 bucle = false;
-                                if(medicinas <= 0)
+                                if(medicinas < 0)
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
@@ -334,7 +334,7 @@ public class Principal
                                 camas= scanner.nextInt();
                                 scanner.nextLine();
                                 bucle = false;
-                                if(camas <= 0)
+                                if(camas < 0)
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
@@ -354,7 +354,7 @@ public class Principal
                                 comida = scanner.nextInt();
                                 scanner.nextLine();
                                 bucle = false;
-                                if(comida <= 0)
+                                if(comida < 0)
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
@@ -374,7 +374,7 @@ public class Principal
                                 tanquesOxigeno = scanner.nextInt();
                                 scanner.nextLine();
                                 bucle = false;
-                                if(tanquesOxigeno <= 0)
+                                if(tanquesOxigeno < 0)
                                 {
                                     System.out.println("\nRespuesta no valida.");
                                     bucle = true;
