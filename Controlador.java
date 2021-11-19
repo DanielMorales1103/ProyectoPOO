@@ -188,6 +188,7 @@ public class Controlador
     {
         return this.cmPacientes;
     }
+
     public void SobreescribirCentros(){
         ArrayList<String> escribircentros = new ArrayList<String>();
         String txt;
@@ -196,5 +197,125 @@ public class Controlador
             escribircentros.add(txt);
         }
         centroscsv.escribir_archivo(escribircentros);
+    }
+
+    public String donarDinero(double donacion)
+    {
+        String info = "";
+        this.ordenarDinero();
+        this.cmDinero.get(0).setDinero(donacion * 0.40);
+        this.cmDinero.get(1).setDinero(donacion * 0.30);
+        this.cmDinero.get(2).setDinero(donacion * 0.20);
+        this.cmDinero.get(3).setDinero(donacion * 0.10);
+        info += this.donacion.monetaria(donacion);
+        info += "\nResumen: ";
+        info += "\n\tHospital:\t\t\t\tDonacion";
+        info += "\n\t" +  this.cmDinero.get(0).getNombre() + "\t\t" + donacion * 0.40;
+        info += "\n\t" +  this.cmDinero.get(1).getNombre() + "\t\t" + donacion * 0.30;
+        info += "\n\t" +  this.cmDinero.get(2).getNombre() + "\t\t" + donacion * 0.20;
+        info += "\n\t" +  this.cmDinero.get(3).getNombre() + "\t\t" + donacion * 0.10;
+
+        this.centros = this.cmDinero;
+        return info;
+    }
+
+    public String donarMedicina(int medicinas)
+    {
+        String info = "";
+        this.ordenarMedicina();
+        int medicina1 = (int) Math.round(medicinas * 0.40);
+        int medicina2 = (int) Math.round(medicinas * 0.30);
+        int medicina3 = (int) Math.round(medicinas * 0.20);
+        int medicina4 = (int) Math.round(medicinas * 0.10);
+
+        this.cmMedicina.get(0).setMedicina(medicina1);
+        this.cmMedicina.get(1).setMedicina(medicina2);
+        this.cmMedicina.get(2).setMedicina(medicina3);
+        this.cmMedicina.get(3).setMedicina(medicina4);
+
+        info += "\nResumen: ";
+        info += "\n\tHospital:\t\t\t\tMedicinas donadas";
+        info += "\n\t" +  this.cmMedicina.get(0).getNombre() + "\t\t" + medicina1;
+        info += "\n\t" +  this.cmMedicina.get(1).getNombre() + "\t\t" + medicina2;
+        info += "\n\t" +  this.cmMedicina.get(2).getNombre() + "\t\t" + medicina3;
+        info += "\n\t" +  this.cmMedicina.get(3).getNombre() + "\t\t" + medicina4;
+
+        this.centros = this.cmMedicina;
+        return info;
+    }
+
+    public String donarTanques(int tanques)
+    {
+        String info = "";
+        this.ordenarTanques();
+        int tanques1 = (int) Math.round(tanques * 0.40);
+        int tanques2 = (int) Math.round(tanques * 0.30);
+        int tanques3 = (int) Math.round(tanques * 0.20);
+        int tanques4 = (int) Math.round(tanques * 0.10);
+
+        this.cmTanques.get(0).setTanquesOxigeno(tanques1);
+        this.cmTanques.get(1).setTanquesOxigeno(tanques2);
+        this.cmTanques.get(2).setTanquesOxigeno(tanques3);
+        this.cmTanques.get(3).setTanquesOxigeno(tanques4);
+
+        info += "\nResumen: ";
+        info += "\n\tHospital:\t\t\t\tTanques de oxigeno donados";
+        info += "\n\t" +  this.cmTanques.get(0).getNombre() + "\t\t" + tanques1;
+        info += "\n\t" +  this.cmTanques.get(1).getNombre() + "\t\t" + tanques2;
+        info += "\n\t" +  this.cmTanques.get(2).getNombre() + "\t\t" + tanques3;
+        info += "\n\t" +  this.cmTanques.get(3).getNombre() + "\t\t" + tanques4;
+
+        this.centros = this.cmTanques;
+        return info;
+    }
+
+    public String donarCamas(int camas)
+    {
+        String info = "";
+        this.ordenarCamas();
+        int cama1 = (int) Math.round(camas * 0.40);
+        int cama2 = (int) Math.round(camas * 0.30);
+        int cama3 = (int) Math.round(camas * 0.20);
+        int cama4 = (int) Math.round(camas * 0.10);
+
+        this.cmCamas.get(0).setCamas(cama1);
+        this.cmCamas.get(1).setCamas(cama2);
+        this.cmCamas.get(2).setCamas(cama3);
+        this.cmCamas.get(3).setCamas(cama4);
+
+        info += "\nResumen: ";
+        info += "\n\tHospital:\t\t\t\tCamas donados";
+        info += "\n\t" +  this.cmCamas.get(0).getNombre() + "\t\t" + cama1;
+        info += "\n\t" +  this.cmCamas.get(1).getNombre() + "\t\t" + cama2;
+        info += "\n\t" +  this.cmCamas.get(2).getNombre() + "\t\t" + cama3;
+        info += "\n\t" +  this.cmCamas.get(3).getNombre() + "\t\t" + cama4;
+
+        this.centros = this.cmCamas;
+        return info;
+    }
+
+    public String donarComida(int comida)
+    {
+        String info = "";
+        this.ordenarComida();
+        int comida1 = (int) Math.round(comida * 0.40);
+        int comida2 = (int) Math.round(comida * 0.40);
+        int comida3 = (int) Math.round(comida * 0.40);
+        int comida4 = (int) Math.round(comida * 0.40);
+
+        this.cmComida.get(0).setComida(comida1);
+        this.cmComida.get(1).setComida(comida2);
+        this.cmComida.get(2).setComida(comida3);
+        this.cmComida.get(3).setComida(comida4);
+
+        info += "\nResumen: ";
+        info += "\n\tHospital:\t\t\t\tComida donada";
+        info += "\n\t" +  this.cmComida.get(0).getNombre() + "\t\t" + comida1;
+        info += "\n\t" +  this.cmComida.get(1).getNombre() + "\t\t" + comida2;
+        info += "\n\t" +  this.cmComida.get(2).getNombre() + "\t\t" + comida3;
+        info += "\n\t" +  this.cmComida.get(3).getNombre() + "\t\t" + comida4;
+
+        this.centros = this.cmComida;
+        return info;
     }
 }
