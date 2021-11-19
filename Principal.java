@@ -30,10 +30,7 @@ public class Principal
         int doctores = 0;
         double dinero = 0;
         int medicinas = 0;
-        int ropaH = 0;
-        int ropaM = 0;
         int camas = 0;
-        int sabanas = 0;
         int comida = 0;
         int tanquesOxigeno = 0;
 
@@ -50,6 +47,7 @@ public class Principal
         boolean perfilvalido = false;
         boolean usuariovalido = false;
         boolean clavevalida = false;
+        boolean nombreValido = false;
 
         if(!hayArchivoU)
         {
@@ -125,6 +123,13 @@ public class Principal
 
                     System.out.println("\nIngrese el nombre del centro medico: ");
                     nombre = scanner.nextLine();
+                    nombreValido = controlador.verificarNombre(nombre);
+                    if(nombreValido)
+                    {
+                        System.out.println("\nEl centro medico ya esta en la base de datos.");
+                        break;
+                    }
+
                     System.out.println("\nIngrese la direccion del centro medico: ");
                     ubicacion = scanner.nextLine();
                     System.out.println("\nIngrese el numero telefonico del centro medico: ");

@@ -10,7 +10,6 @@ import java.util.*;
 public class Controlador
 {
     private Donacion donacion = new Donacion();
-    private Usuario perfil;
     private Archivos usuarioscsv = new Archivos("usuarios.csv");
     private ArrayList<String> listaUsuarios = new ArrayList<String>();
     private Archivos centroscsv = new Archivos("centros.csv");
@@ -76,6 +75,17 @@ public class Controlador
         }
     }
 
+    public boolean verificarNombre(String nombre)
+    {
+        boolean x = false;
+        for(centroMedico c: this.centros)
+        {
+            if(c.getNombre().equals(nombre)) x = true;
+            else x = false;
+        }
+        return x;
+    }
+
     public void agregarCento(centroMedico centro)
     {
         ArrayList<String> textoanterior = centroscsv.lectura();
@@ -96,7 +106,7 @@ public class Controlador
         for(centroMedico k: centros)
         {
             info += "\nCentro medico No. " + contador;
-            info += "\n\tNombre del centro: " + k.getNombre();
+            info += "\n\tNombre del centro: " + k.getNombre() + ".";
             info += "\n\tLocalizacion del centro: " + k.getUbicacion();
             info += "\n\tNumero de telefono del centro: " + k.getNumero();
             info += "\n\tCantidad de doctores del centro: " + k.getDoctores();
