@@ -53,7 +53,7 @@ public class centroMedico
     
     public void setDinero(Double dinero)
     {
-        this.dinero = dinero;
+        this.dinero += dinero;
     }
     
     
@@ -65,7 +65,7 @@ public class centroMedico
     
     public void setMedicina(Integer medicinas)
     {
-        this.medicinas = medicinas;
+        this.medicinas += medicinas;
     }
     
     
@@ -98,7 +98,7 @@ public class centroMedico
     
     public void setCamas(Integer camas)
     {
-        this.camas = camas;
+        this.camas += camas;
     }
     
     
@@ -109,7 +109,7 @@ public class centroMedico
     
     public void setComida(Integer comida)
     {
-        this.comida = comida;
+        this.comida += comida;
     }
     
     
@@ -120,7 +120,7 @@ public class centroMedico
     
     public void setTanquesOxigeno(Integer tanquesOxigeno)
     {
-        this.tanquesOxigeno = tanquesOxigeno;
+        this.tanquesOxigeno += tanquesOxigeno;
     }
     
     public String getUbicacion()
