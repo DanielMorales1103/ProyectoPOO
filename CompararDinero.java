@@ -16,8 +16,8 @@ public class CompararDinero implements Comparator<centroMedico>
      */
     @Override
     public int compare(centroMedico o1, centroMedico o2) {
-        if(o1.getDinero() > o2.getDinero()) return -1;
-        else if(o1.getDinero() > o2.getDinero()) return 0;
+        if(o2.getDinero() > o1.getDinero()) return -1;
+        else if(o2.getDinero() > o1.getDinero()) return 0;
         else return 1;
     }
 }

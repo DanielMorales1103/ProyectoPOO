@@ -16,8 +16,8 @@ public class CompararComida implements Comparator<centroMedico>
      */
     @Override
     public int compare(centroMedico o1, centroMedico o2) {
-        if(o1.getComida() > o2.getComida()) return -1;
-        else if(o1.getComida() > o2.getComida()) return 0;
+        if(o2.getComida() > o1.getComida()) return -1;
+        else if(o2.getComida() > o1.getComida()) return 0;
         else return 1;
     }
 }

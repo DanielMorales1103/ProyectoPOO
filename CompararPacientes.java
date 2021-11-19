@@ -16,8 +16,8 @@ public class CompararPacientes implements Comparator<centroMedico>
      */
     @Override
     public int compare(centroMedico o1, centroMedico o2) {
-        if(o1.getPacientes() > o2.getPacientes()) return -1;
-        else if(o1.getPacientes() > o2.getPacientes()) return 0;
+        if(o2.getPacientes() > o1.getPacientes()) return -1;
+        else if(o2.getPacientes() > o1.getPacientes()) return 0;
         else return 1;
     }
 }
